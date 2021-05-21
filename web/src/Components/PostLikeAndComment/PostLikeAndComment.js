@@ -4,7 +4,8 @@ import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import M from "materialize-css";
 import Comment from "../Comment/Comment";
 import * as DashboardRoutes from "../../Routes/DashboardRoutes";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; 
+
 const PostLikeAndComment = (props) => {
   let {
     name,
@@ -32,7 +33,8 @@ const PostLikeAndComment = (props) => {
     }
     createComment(commentText, postId);
   };
-
+     
+  
   return (
     <div className="Post_Detail_Container">
       <div className="Post_Row_Container" style={{ marginLeft: "-0.5rem" }}>
@@ -55,7 +57,8 @@ const PostLikeAndComment = (props) => {
         /> */}
       </div>
       <span className="Post_Title_Text">{hookTotalLikes} likes</span>
-
+      {/* <button  type="submit" onClick= { ()=> profileFunctions.Deletelfun(postId)}  > Delete</button> */}
+          
       {wantName ? (
         <div>
           <div className="Post_Row_Container">
@@ -73,20 +76,18 @@ const PostLikeAndComment = (props) => {
                 ? `View all ${allComments.length} comments`
                 : "Be the first one to comment"}
             </span>
-          </div>
+            </div>
           {allComments.map((comment, index) => {
-            let check = allComments.length - 3;
-            if (comment && index >= check) {
+                    console.log(comment)
               return (
                 <Comment
-                  key={comment._id}
+                  val={comment._id}
                   name={comment.postedBy.name}
                   comment={comment.comment}
                   userId={comment.postedBy._id}
                 />
               );
-            } else {
-            }
+            
           })}
         </div>
       ) : null}

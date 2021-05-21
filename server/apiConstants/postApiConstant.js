@@ -18,4 +18,5 @@ exports.putUnLikePostRoute = () => "/unLikePost";
 
 exports.putCommentPostRoute = () => "/commentPost";
 
-exports.postDeletePost=(postId)=>`/deletePost/:${postId}`
+exports.postDeletePost=()=>`/deletePost`
+exports.CommentDeletePost=()=>`/deleteComment`

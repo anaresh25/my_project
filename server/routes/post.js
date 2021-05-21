@@ -48,12 +48,16 @@ router.put(
   postController.commentOnPost
 );
 
-router.post(
+router.delete(
   postRoutes.postDeletePost(),
   authController.requireLogin,
   postController.deletePost
 );
-
+router.delete(
+  postRoutes.CommentDeletePost(),
+  authController.requireLogin,
+  postController.deleteComment
+);
 
 
 module.exports = router;

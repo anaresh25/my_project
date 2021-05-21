@@ -1,4 +1,5 @@
 import * as userApiConstant from "../apiConstants/userApiConstant";
+import * as PostApiConstant from "../apiConstants/postApiConstant";
 import { AuthConfigForWeb } from "../apiConstants/jwtConstant";
 class profileFunctions {
   constructor() {}
@@ -78,6 +79,33 @@ class profileFunctions {
     res = res.json();
     return res;
   }
+
+static async Deletelfun(postId) {
+  let res = await fetch(PostApiConstant.postDeletePost(), {
+    method: "delete",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: AuthConfigForWeb(),
+    },
+    body: JSON.stringify({ postId: postId }),
+  });
+  res = res.json();
+  return res;
 }
+static async CommentDel(postId,user) {
+  console.log(postId)
+  let res = await fetch(PostApiConstant.CommentDeletePost(), {
+    method: "delete",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: AuthConfigForWeb(),
+    },
+    body: JSON.stringify({ postId,user }),
+  });
+  res = res.json();
+  return res;
+}
+}
+
 
 export default profileFunctions;

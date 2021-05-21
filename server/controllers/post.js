@@ -101,6 +101,7 @@ exports.getLoggedInUserPosts = async (req, res, next) => {
 exports.likePost = async (req, res, next) => {
   const { postId } = req.body;
   const { _id } = req.user;
+  console.log(_id,postId)
 
   Post.findByIdAndUpdate(
     postId,
@@ -122,6 +123,7 @@ exports.likePost = async (req, res, next) => {
 exports.unLikePost = async (req, res, next) => {
   const { postId } = req.body;
   const { _id } = req.user;
+  
   Post.findByIdAndUpdate(
     postId,
     {
@@ -178,15 +180,45 @@ exports.getCommentsForPost = async (req, res, next) => {
 };
 
 exports.deletePost = async (req, res, next) => {
-  const { postId } = req.params;
+  
+  const { postId } = req.body;
   const { _id } = req.user;
+  console.log(_id,postId,"pressed_Delete_button")
   try {
     const checkIfPostExist = await Post.findOne({ _id: postId });
     if (checkIfPostExist.postedBy._id.toString() === _id.toString()) {
       const result = await checkIfPostExist.remove();
+      console.log(result,"result")
+      console.log("dflsdjkflsdlf")
       return res.json({ message: "successfully delete" });
     }
+    else{
+      console.log("fldfksjdfflsskljjfd")
+    }
   } catch (err) {
+    console.log(err,"err")
+    return res.status(402).json({ error: err });
+  }
+};
+
+exports.delete = async (req, res, next) => {
+  
+  const { postId } = req.body;
+  const { _id } = req.user;
+  console.log(_id,postId,"pressed_Delete_button")
+  try {
+    // const checkIfPostExist = await Post.findOne({ _id: postId });
+    // if (checkIfPostExist.postedBy._id.toString() === _id.toString()) {
+    //   const result = await checkIfPostExist.remove();
+    //   console.log(result,"result")
+    //   console.log("dflsdjkflsdlf")
+    //   return res.json({ message: "successfully delete" });
+    // }
+    // else{
+    //   console.log("fldfksjdfflsskljjfd")
+    // }
+  } catch (err) {
+    console.log(err,"err")
     return res.status(402).json({ error: err });
   }
 };

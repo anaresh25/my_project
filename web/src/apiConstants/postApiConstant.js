@@ -25,4 +25,7 @@ export const putUnLikePostRoute = () => "/unLikePost";
 
 export const putCommentPostRoute = () => "/commentPost";
 
-export const postDeletePost=(postId)=>`/deletePost/:${postId}`
+export const postDeletePost=()=>`/deletePost`
+
+
+export const CommentDeletePost=()=>`/deleteComment`
