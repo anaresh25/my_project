@@ -91,10 +91,10 @@ const Navigation = () => {
       <nav className="toolbar__navigation">
         <div className="toolbar__logo">
           <Link
-            to={state ? "/" : authRoutes.logInRoute()}
+            to={user ? "/" : authRoutes.logInRoute()}
             className="nav-logoLink"
           >
-            Instagram
+            ECHO
           </Link>
         </div>
         <div className="toolbar_navigation-items">
@@ -109,22 +109,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-
-// import React from "react";
-// import { Link } from "react-router-dom";
-// import authRoutes from "../Routes/AuthRoutes";
-// import "./navigation.css";
-
-// const Navigation = () => (
-//   <header className="toolbar">
-//     <nav className="toolbar__navigation">
-//       <div className="toolbar__logo">
-//         <Link to="/" className="nav-logoLink">
-//           Instagram
-//         </Link>
-//       </div>
-//     </nav>
-//   </header>
-// );
-
-// export default Navigation;

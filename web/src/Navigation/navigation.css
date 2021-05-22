@@ -35,10 +35,12 @@
 }
 
 .nav-logoLink {
-  color: black;
+  /*color: black;*/
+  color: #E040FB;
   text-decoration: none;
   font-size: 2.2rem;
-  font-family: "Grand Hotel", cursive;
+  /* font-family: "Grand Hotel", cursive; */
+  font-family: fantasy;
 }
 .nav-profile-container {
   display: flex;
