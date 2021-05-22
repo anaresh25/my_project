@@ -30,8 +30,8 @@ const Routing = () => {
         user: user,
       });
     } else {
-      //   if (!history.location.pathname.startsWith("/reset"))
-      //     history.push(authRoutes.logInRoute);
+       // if (!history.location.pathname.startsWith("/reset"))
+          history.push('/login');
     }
   }, []);
   return (
@@ -53,6 +53,10 @@ const Routing = () => {
         path={DashboardRoutes.profileFollowingDataRoute()}
         component={ProfileFollowData}
       />
+      {/* <Route
+       path={DashboardRoutes.postDeletePostRoute()}
+       component={Profile}
+      /> */}
       {/* <Route path="/profile/:userid">
         <UserProfile />
       </Route>

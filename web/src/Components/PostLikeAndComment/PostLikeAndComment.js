@@ -6,6 +6,9 @@ import Comment from "../Comment/Comment";
 import * as DashboardRoutes from "../../Routes/DashboardRoutes";
 import { Link } from "react-router-dom"; 
 
+import profileFunctions from "../../utils/profile";
+
+
 const PostLikeAndComment = (props) => {
   let {
     name,
@@ -57,7 +60,7 @@ const PostLikeAndComment = (props) => {
         /> */}
       </div>
       <span className="Post_Title_Text">{hookTotalLikes} likes</span>
-      {/* <button  type="submit" onClick= { ()=> profileFunctions.Deletelfun(postId)}  > Delete</button> */}
+      <button  type="submit" onClick= { ()=> profileFunctions.Deletelfun(postId)}  > Delete</button>
           
       {wantName ? (
         <div>

@@ -60,33 +60,35 @@ const Login = () => {
     <div className="page">
       <div className="container">
         <div className="card">
-          <span className="instaGram">Instagram</span>
+          <p className="sign" align="center">Sign in</p>
           <input
             type="email"
             placeholder="Email"
-            className="input"
+            className="un"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type="password"
             placeholder="Password"
-            className="input"
+            className="pass"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <button className="authButton" onClick={PostData}>
             Log in
           </button>
-          <span className="authText">
+          <p className="forgot" align="center">
             Don't have an account ?{" "}
             <Link to={authRoutes.signUpRoute()} className="auth-nav-link">
               Sign up
             </Link>
-          </span>
+          </p>
         </div>
       </div>
     </div>
   );
+
+  
 };
 export default Login;

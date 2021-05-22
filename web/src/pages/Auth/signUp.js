@@ -49,13 +49,13 @@ const SignUp = () => {
         M.toast({ html: data.error, classes: "error_Toast" });
       } else {
         M.toast({ html: data.message, classes: "success_Toast" });
-        history.push(authRoutes.logInRoute);
+        history.push(authRoutes.logInRoute());
       }
-
       setLoading(false);
     } catch (error) {
       console.log(error);
     }
+    
   };
   const setImgFunc = (e) => {
     if (e.target.files[0]) {
@@ -71,11 +71,11 @@ const SignUp = () => {
   return (
     <div className="page">
       <div className="container">
-        <div className="card">
-          <span className="instaGram">Instagram</span>
-          <span className="descriptionText">
+        <div className="signup_card">
+          <p className="sign" align="center">Sign Up</p>
+          <p className="forgot">
             Sign up to see photos and videos from your friends.
-          </span>
+          </p>
           <div
             className="Sign_up_avatar"
             onClick={() => {
@@ -91,6 +91,7 @@ const SignUp = () => {
               <img src={imagePreview} className="Upload_Image" />
             )}
             <input
+              
               type="file"
               ref={fileRef}
               onChange={setImgFunc}
@@ -102,21 +103,21 @@ const SignUp = () => {
           <input
             type="email"
             placeholder="Email"
-            className="input"
+            className="un"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type="text"
             placeholder="Name"
-            className="input"
+            className="un"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
           <input
             type="password"
             placeholder="Password"
-            className="input"
+            className="pass"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -126,14 +127,14 @@ const SignUp = () => {
               Sign up
             </button>
           ) : (
-            <div className="Post_Title_Comment_Text">Signing up...</div>
+            <p className="forgot" align="center" >Signing up...</p>
           )}
-          <span className="authText">
+          <p className="forgot" align="center">
             Have an account ?{" "}
             <Link to={authRoutes.logInRoute()} className="auth-nav-link">
-              Login
+              Sign In
             </Link>
-          </span>
+          </p>
         </div>
       </div>
     </div>
