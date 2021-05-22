@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import "./PostLikeAndComment.css";
+
+import DeleteIcon from '@material-ui/icons/Delete';
+
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import M from "materialize-css";
 import Comment from "../Comment/Comment";
 import * as DashboardRoutes from "../../Routes/DashboardRoutes";
-import { Link } from "react-router-dom"; 
-
+import { Link } from "react-router-dom";
 import profileFunctions from "../../utils/profile";
+
+// import { useDispatch } from 'react-redux';
+
+import { AuthConfigForWeb } from "../../apiConstants/jwtConstant";
 
 
 const PostLikeAndComment = (props) => {
@@ -22,6 +28,7 @@ const PostLikeAndComment = (props) => {
     createComment,
     postId,
     userId,
+    
   } = props;
   const toggleFunc = () => {
     toggleLike();
@@ -29,15 +36,22 @@ const PostLikeAndComment = (props) => {
   const [commentText, setCommentText] = useState();
   const iconSize = 30;
 
+
+  // const dispatch = useDispatch();
+
+
+
   const createCommentFunc = () => {
     if (commentText === "" || !commentText) {
       M.toast({ html: "Please fill comment box", classes: "error_Toast" });
       return;
     }
     createComment(commentText, postId);
+    setCommentText(' ')
   };
-     
-  
+
+
+
   return (
     <div className="Post_Detail_Container">
       <div className="Post_Row_Container" style={{ marginLeft: "-0.5rem" }}>
@@ -48,20 +62,25 @@ const PostLikeAndComment = (props) => {
             onClick={toggleFunc}
           />
         ) : (
+          
           <MdFavoriteBorder
             size={iconSize}
             style={{ fill: "black" }}
             onClick={toggleFunc}
           />
         )}
+
         {/* <MdInsertComment
           size={iconSize}
           style={{ color: "black", marginLeft: "10px" }}
         /> */}
+      <p className="Post_Title_Text"> &nbsp;{hookTotalLikes} </p>
+
+      {(postId===postId)?  
+      <DeleteIcon  type="submit" onClick= { ()=>profileFunctions.Deletelfun(postId)} />
+      : null}
       </div>
-      <span className="Post_Title_Text">{hookTotalLikes} likes</span>
-      <button  type="submit" onClick= { ()=> profileFunctions.Deletelfun(postId)}  > Delete</button>
-          
+
       {wantName ? (
         <div>
           <div className="Post_Row_Container">
@@ -79,18 +98,20 @@ const PostLikeAndComment = (props) => {
                 ? `View all ${allComments.length} comments`
                 : "Be the first one to comment"}
             </span>
-            </div>
+          </div>
           {allComments.map((comment, index) => {
-                    console.log(comment)
+            let check = allComments.length - 3;
+             {
               return (
                 <Comment
+                  // key={comment._id}
                   val={comment._id}
                   name={comment.postedBy.name}
                   comment={comment.comment}
                   userId={comment.postedBy._id}
                 />
               );
-            
+            } 
           })}
         </div>
       ) : null}
@@ -112,7 +133,7 @@ const PostLikeAndComment = (props) => {
         />
 
         <button className="commentButton" onClick={createCommentFunc}>
-          Post
+          Comment
         </button>
       </div>
     </div>

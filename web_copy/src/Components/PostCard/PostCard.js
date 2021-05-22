@@ -19,7 +19,8 @@ const PostCard = (props) => {
     likes,
     doesLike,
     comments,
-    userId
+    userId,
+    postedBy
   } = props;
   const [Modal, open, close, isOpen] = useModal("root", {
     preventScroll: true,
@@ -62,6 +63,8 @@ const PostCard = (props) => {
             allComments={allComments}
             createComment={createComment}
             userId={userId}
+            postedBy={postedBy}
+
           />
         </div>
       </div>
