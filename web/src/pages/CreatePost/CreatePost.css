@@ -1,0 +1,57 @@
+.Create_Post_Page_Container {
+  max-width: 1000px;
+  margin: 0px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.Create_Post_Card {
+  display: flex;
+  width: 60%;
+  justify-content: flex-start;
+  flex-direction: column;
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 0.5rem 0;
+  overflow: hidden;
+  padding: 0.5rem;
+  align-items: center;
+}
+
+.Upload_Image_Container {
+  cursor: pointer;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border-bottom: 1px solid black; */
+}
+.Upload_Image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.authbutton {
+  cursor: pointer;
+    border-radius: 5em;
+    color: #fff;
+    background: linear-gradient(to right, #9C27B0, #E040FB);
+    border: 0;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    /* margin-left: 35%; */
+    font-size: 16px;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+    text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+    color: #E1BEE7;
+    text-decoration: none
+    
+}
