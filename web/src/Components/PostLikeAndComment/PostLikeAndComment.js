@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./PostLikeAndComment.css";
 
-import DeleteIcon from '@material-ui/icons/Delete';
 
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import M from "materialize-css";
@@ -9,6 +8,7 @@ import Comment from "../Comment/Comment";
 import * as DashboardRoutes from "../../Routes/DashboardRoutes";
 import { Link } from "react-router-dom";
 import profileFunctions from "../../utils/profile";
+import { useHistory } from "react-router-dom";
 
 // import { useDispatch } from 'react-redux';
 
@@ -38,7 +38,7 @@ const PostLikeAndComment = (props) => {
 
 
   // const dispatch = useDispatch();
-
+const history = useHistory()
 
 
   const createCommentFunc = () => {
@@ -51,7 +51,9 @@ const PostLikeAndComment = (props) => {
   };
 
 
-
+const a = localStorage.getItem('user')
+ const use= JSON.parse(a)._id
+ console.log(use,userId)
   return (
     <div className="Post_Detail_Container">
       <div className="Post_Row_Container" style={{ marginLeft: "-0.5rem" }}>
@@ -76,8 +78,8 @@ const PostLikeAndComment = (props) => {
         /> */}
       <p className="Post_Title_Text"> &nbsp;{hookTotalLikes} </p>
 
-      {(postId===postId)?  
-      <DeleteIcon  type="submit" onClick= { ()=>profileFunctions.Deletelfun(postId)} />
+      {(use===userId)?  
+          <button   type="submit" onClick= { ()=>profileFunctions.Deletelfun(postId,userId,history)}>delete</button>
       : null}
       </div>
 
@@ -100,7 +102,7 @@ const PostLikeAndComment = (props) => {
             </span>
           </div>
           {allComments.map((comment, index) => {
-            let check = allComments.length - 3;
+            
              {
               return (
                 <Comment
@@ -132,8 +134,8 @@ const PostLikeAndComment = (props) => {
           onChange={(e) => setCommentText(e.target.value)}
         />
 
-        <button className="commentButton" onClick={createCommentFunc}>
-          Comment
+        <button  onClick={createCommentFunc}>
+           Post
         </button>
       </div>
     </div>

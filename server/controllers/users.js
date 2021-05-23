@@ -129,6 +129,41 @@ exports.requestAcceptUser = async (req, res, next) => {
 };
 
 exports.requestDeleteUser = async (req, res, next) => {
+  console.log("fllkfjsjf")
+  const { userId } = req.body;
+  const { _id } = req.user;
+  try {
+    await User.findByIdAndUpdate(
+      userId,
+      {
+        $pull: { requestedTo: _id },
+      },
+      {
+        new: true,
+      }
+    );
+
+    await User.findByIdAndUpdate(
+      _id,
+      {
+      
+        $pull: { requestedBy: userId },
+      },
+      {
+        new: true,
+      }
+    );
+
+    return res.json({
+      message: "Request deleted",
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+exports.selfrequestUser = async (req, res, next) => {
+  console.log("fllkfjsjf")
   const { userId } = req.body;
   const { _id } = req.user;
   try {
@@ -158,7 +193,6 @@ exports.requestDeleteUser = async (req, res, next) => {
     console.log(err);
   }
 };
-
 exports.unFollowUser = async (req, res, next) => {
   const { userId } = req.body;
   const { _id } = req.user;
@@ -191,6 +225,7 @@ exports.unFollowUser = async (req, res, next) => {
 };
 
 exports.searchUser = async (req, res, next) => {
+  
   const { name } = req.body;
   if (name === "" || !name) {
     return res.json({ message: "search complete", searchResult: [] });
@@ -200,6 +235,16 @@ exports.searchUser = async (req, res, next) => {
     const searchResult = await User.find({
       name: { $regex: pattern, $options: "i" },
     }).select("profile_image _id name");
+    return res.json({ message: "search complete", searchResult: searchResult });
+  } catch (err) {
+    return res.status(402).json({ error: err });
+  }
+};
+
+exports.Users = async (req, res, next) => {
+
+  try {
+    const searchResult = await User.find({})
     return res.json({ message: "search complete", searchResult: searchResult });
   } catch (err) {
     return res.status(402).json({ error: err });

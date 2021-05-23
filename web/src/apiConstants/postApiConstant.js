@@ -29,3 +29,5 @@ export const postDeletePost=()=>`/deletePost`
 
 
 export const CommentDeletePost=()=>`/deleteComment`
+
+export const selfDeletPost=()=>`/deleteComment`

@@ -9,3 +9,5 @@ exports.putRequestDeleteUserRoute = () => "/requestDeleteFollowUser";
 exports.postSearchUserRoute = () => "/search-users";
 
 exports.putUnFollowUserRoute = () => "/unFollow";
+exports.Users= () => "/Allusers";
+exports.deleteselfrequest= () => "/deleteselfrequest";

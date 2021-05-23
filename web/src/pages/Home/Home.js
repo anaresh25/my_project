@@ -11,6 +11,7 @@ import M from "materialize-css";
 import FetchFeedPost from "../../customHooks/fetchFeedPostHook";
 import { UserContext } from "../../App";
 
+
 const Home = () => {
 
   const { state, dispatch } = useContext(UserContext);
@@ -24,12 +25,7 @@ const Home = () => {
     }
   }, [error]);
 
-  // const modalOn = () => {
-  //   setOpen(true);
-  // };
-  // const modalClose = () => {
-  //   setOpen(false);
-  // };
+  
   return (
     <div className="home" >
       <InfiniteScroll
@@ -49,6 +45,7 @@ const Home = () => {
         ) : null}
         {data.map((post, index) => {
           return (
+            <>
             <PostCard
               media={post.media}
               name={post.postedBy.name}
@@ -60,6 +57,7 @@ const Home = () => {
               comments={post.comments}
               userId={post.postedBy._id}
             />
+            </>
           );
         })}
       </InfiniteScroll>

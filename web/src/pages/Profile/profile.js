@@ -73,7 +73,7 @@ const Profile = () => {
         let res,
           tempAdminRequest = adminRequestedUser,
           tempFollow = follow;
-        setRequestOn(true);
+           setRequestOn(true);
         if (type === FOLLOW_TYPE_CONSTANT) {
           setAdminRequestedUser(true);
           tempAdminRequest = true;
@@ -89,11 +89,13 @@ const Profile = () => {
           res = await profileFunctions.unFollowUser(userId);
         }
         if (type === DELETE_REQUEST_TYPE_CONSTANT) {
+          console.log("deeltere")
           setAdminRequestedUser(false);
           setUserWantsToFollow(false);
           tempFollow = false;
           tempAdminRequest = false;
-          res = await profileFunctions.deleteRequestUser(userId);
+          console.log(userId)
+          res = await profileFunctions.DeleteSelfRequest(userId);
           dispatch({ type: "UPDATE_REQUESTEDBY", userId: userId });
         }
 
@@ -119,7 +121,7 @@ const Profile = () => {
   };
   const navigateToFollowing = () => {
     if (follow || isAdmin) {
-      history.push(DashboardRoutes.createProfileFollowingDataRoute(userId), {
+        history.push(DashboardRoutes.createProfileFollowingDataRoute(userId), {
         data: user ? user.following : [],
       });
     }

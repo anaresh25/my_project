@@ -62,6 +62,7 @@ console.log(profile_image)
             name={name}
             caption={caption}
             postId={postId}
+            userId={userId}
             likes={likes}
             doesLike={doesLike}
             wantName={false}
