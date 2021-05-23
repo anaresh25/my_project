@@ -10,11 +10,13 @@ import { Link } from "react-router-dom";
 import profileFunctions from "../../utils/profile";
 import { useHistory } from "react-router-dom";
 
+
+ import DeleteIcon from '@material-ui/icons/Delete';
 // import { useDispatch } from 'react-redux';
 
 import { AuthConfigForWeb } from "../../apiConstants/jwtConstant";
 
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 
 
@@ -41,9 +43,6 @@ const PostLikeAndComment = (props) => {
 
 
   const history = useHistory();
-
-  // const dispatch = useDispatch();
-const history = useHistory()
 
 
   const createCommentFunc = () => {
@@ -83,13 +82,11 @@ const a = localStorage.getItem('user')
         /> */}
       <p className="Post_Title_Text"> &nbsp;{hookTotalLikes} </p>
 
-<<<<<<< HEAD
-      {(userId===userId)?  
+
+
+      {(use===userId)?
       <DeleteIcon  type="submit" onClick= { ()=>profileFunctions.Deletelfun(postId,history,userId)  } />
-=======
-      {(use===userId)?  
-          <button   type="submit" onClick= { ()=>profileFunctions.Deletelfun(postId,userId,history)}>delete</button>
->>>>>>> 42e11b99842ce8f5affa30569caffb479e4ef6f8
+      
       : null}
       </div>
 

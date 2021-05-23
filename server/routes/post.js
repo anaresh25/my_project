@@ -53,19 +53,19 @@ router.delete(
   authController.requireLogin,
   postController.deletePost
 );
-<<<<<<< HEAD
 
 router.delete(
   postRoutes.CommentDeletePost(),
   authController.requireLogin,
   postController.CommentDeletePost
-=======
-router.delete(
-  postRoutes.CommentDeletePost(),
-  authController.requireLogin,
-  postController.deleteComment
->>>>>>> 42e11b99842ce8f5affa30569caffb479e4ef6f8
 );
+
+// router.delete(
+//   postRoutes.CommentDeletePost(),
+//   authController.requireLogin,
+//   postController.deleteComment
+
+// );
 
 
 module.exports = router;

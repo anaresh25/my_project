@@ -86,7 +86,7 @@ class profileFunctions {
     return res;
   }
 
-<<<<<<< HEAD
+
   static async Deletelfun(postId,history,userId) {
 
     let res = await fetch(PostApiConstant.postDeletePost(), {
@@ -116,7 +116,7 @@ class profileFunctions {
     res = res.json();
     return res;
   }
-=======
+
 static async Deletelfun(postId,userId,history) {
   let res = await fetch(PostApiConstant.postDeletePost(), {
     method: "delete",
@@ -155,7 +155,7 @@ static async AllUSER() {
   res = res.json();
   return res;
 }
->>>>>>> 42e11b99842ce8f5affa30569caffb479e4ef6f8
+
 
 static async DeleteSelfRequest(userId) {
   console.log("deeltere")
