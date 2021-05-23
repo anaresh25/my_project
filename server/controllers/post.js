@@ -201,7 +201,7 @@ exports.deletePost = async (req, res, next) => {
   }
 };
 
-exports.delete = async (req, res, next) => {
+exports.CommentDeletePost = async (req, res, next) => {
   
   const { postId } = req.body;
   const { _id } = req.user;

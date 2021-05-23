@@ -1,11 +1,13 @@
 import * as userApiConstant from "../apiConstants/userApiConstant";
 import * as PostApiConstant from "../apiConstants/postApiConstant";
 import { AuthConfigForWeb } from "../apiConstants/jwtConstant";
+// import * as DashboardRoutes from "../Routes/DashboardRoutes";
 
 
 class profileFunctions {
   constructor() {}
 
+  
   static async fetchProfile(userId) {
     let res = await fetch(userApiConstant.getUserRoute(userId), {
       method: "get",
@@ -83,7 +85,8 @@ class profileFunctions {
     return res;
   }
 
-  static async Deletelfun(postId) {
+  static async Deletelfun(postId,history,userId) {
+
     let res = await fetch(PostApiConstant.postDeletePost(), {
       method: "delete",
       headers: {
@@ -92,8 +95,10 @@ class profileFunctions {
       },
       body: JSON.stringify({ postId: postId }),
     });
+    history.push(`/profile/${userId}`)
     res = res.json();
     return res;
+    //DashboardRoutes.profileRoute()
   }
 
   static async CommentDel(postId,user) {

@@ -14,6 +14,9 @@ import profileFunctions from "../../utils/profile";
 
 import { AuthConfigForWeb } from "../../apiConstants/jwtConstant";
 
+import { useHistory } from "react-router-dom";
+
+
 
 const PostLikeAndComment = (props) => {
   let {
@@ -36,6 +39,8 @@ const PostLikeAndComment = (props) => {
   const [commentText, setCommentText] = useState();
   const iconSize = 30;
 
+
+  const history = useHistory();
 
   // const dispatch = useDispatch();
 
@@ -76,8 +81,8 @@ const PostLikeAndComment = (props) => {
         /> */}
       <p className="Post_Title_Text"> &nbsp;{hookTotalLikes} </p>
 
-      {(postId===postId)?  
-      <DeleteIcon  type="submit" onClick= { ()=>profileFunctions.Deletelfun(postId)} />
+      {(userId===userId)?  
+      <DeleteIcon  type="submit" onClick= { ()=>profileFunctions.Deletelfun(postId,history,userId)  } />
       : null}
       </div>
 

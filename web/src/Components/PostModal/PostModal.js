@@ -47,7 +47,7 @@ console.log(profile_image)
               if (comment) {
                 return (
                   <Comment
-                    key={comment._id}
+                    val={comment._id}
                     name={comment.postedBy.name}
                     profile_image={comment.postedBy.profile_image}
                     comment={comment.comment}
