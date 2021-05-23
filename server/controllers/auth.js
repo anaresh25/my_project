@@ -7,10 +7,11 @@ const cloudinary = require("../utils/cloudinary");
 
 exports.postSignUp = async (req, res, next) => {
   const { name, email, password, media } = req.body;
-  if (!email || !password || !name || !media) {
+  if (!email || !password || !name ) {
     return res.status(402).json({ error: "Please add all details" });
   }
 
+  // console.log(media,"hello")
   const checkUserExist = await User.findOne({ email: email });
   if (checkUserExist) {
     return res
@@ -19,10 +20,14 @@ exports.postSignUp = async (req, res, next) => {
   }
 
   const hashedPassword = await bcrypt.hash(password, 12);
-  const mediaRes = await cloudinary.uploader.upload(media);
+  const mediaRes = await cloudinary.uploader.upload(media); ;
+  // if(media){
+  //   mediaRes = await cloudinary.uploader.upload(media);
+  // }
+  // console.log(mediaRes,"hello")
   const user = new User({
     email: email,
-    profile_image: mediaRes.url,
+    profile_image:mediaRes.url ,
     password: hashedPassword,
     name: name,
   });

@@ -48,11 +48,12 @@ const [searchuser,setsearchuser] =useState(false)
     if (user) {
       return (
         <>
-          <li>
+
+          <li> 
             <div className="dropdown">
               <div className="nav-profile-container">
                 <img src={user.profile_image} className="nav-profile" />
-                <span className="nav-link" style={{ fontSize: "1.6rem" }}>
+                <span className="nav-link" style={{ fontSize: "1.6rem" ,cursor:"default" }}  >
                   {user.name}
                 </span>
               </div>
@@ -87,6 +88,12 @@ const [searchuser,setsearchuser] =useState(false)
               </div>
             </div>
           </li>
+          <li
+                  style={{cursor:"pointer"}}
+                  onClick={logoutFunc}
+                >
+                  <span className="nav-link"> Logout</span>
+                </li>
         </>
       );
     } else {
