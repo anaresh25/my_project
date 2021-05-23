@@ -44,6 +44,7 @@ console.log(profile_image)
               userId={userId}
             />
             {allComments.map((comment, index) => {
+                {console.log(comment)}
               if (comment) {
                 return (
                   <Comment
@@ -61,6 +62,7 @@ console.log(profile_image)
             name={name}
             caption={caption}
             postId={postId}
+            userId={userId}
             likes={likes}
             doesLike={doesLike}
             wantName={false}

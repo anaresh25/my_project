@@ -15,16 +15,19 @@ import { FaUserFriends } from "react-icons/fa";
 import useModal from "react-hooks-use-modal";
 import SearchModal from "../Components/SearchModal/SearchModal";
 import "./navigation.css";
+import AllUser from '../Components/SearchModal/Alluser'
 
 const Navigation = () => {
   const { state, dispatch } = useContext(UserContext);
-  console.log(state);
+  const [users,setusers] =useState(false)
+const [searchuser,setsearchuser] =useState(false)
   const { user } = state;
   const [Modal, open, close, isOpen] = useModal("root", {
     preventScroll: true,
   });
   const history = useHistory();
   const iconSize = 26;
+  const data = state.user ? state.user.requestedBy : [];
 
   const renderList = useCallback(() => {
     const logoutFunc = () => {
@@ -41,6 +44,7 @@ const Navigation = () => {
     const navigateToRequest = () => {
       history.push(DashboardRoutes.followersRoute());
     };
+   
     if (user) {
       return (
         <>
@@ -59,7 +63,7 @@ const Navigation = () => {
                   <span className="nav-link">Profile</span>
                 </li>
                 <li onClick={open}>
-                  <MdSearch size={iconSize} />
+                  <MdSearch size={iconSize} onClick={()=>setsearchuser(!searchuser)} />
                   <span className="nav-link">Search</span>
                 </li>
                 <li onClick={navigateToCreate}>
@@ -68,7 +72,11 @@ const Navigation = () => {
                 </li>
                 <li onClick={navigateToRequest}>
                   <FaUserFriends size={iconSize} />
-                  <span className="nav-link">Follow Requests</span>
+                  <span className="nav-link">Follow Requests</span><em style={{background:'red',margin:"10px",borderRadius:"1%"}}>{data.length}</em>
+                </li>
+                <li onClick={open}>
+                  <FaUserFriends size={iconSize} onClick={()=>setusers(!users)} />
+                  <span className="nav-link">All User</span>
                 </li>
                 <li
                   style={{ borderTop: "1px solid grey" }}
@@ -101,9 +109,12 @@ const Navigation = () => {
           <ul>{renderList()}</ul>
         </div>
       </nav>
-      <Modal>
+      { searchuser && <Modal>
         <SearchModal close={close} />
-      </Modal>
+      </Modal> }
+      { users && <Modal>
+        <AllUser close={close}/>
+      </Modal> }
     </header>
   );
 };

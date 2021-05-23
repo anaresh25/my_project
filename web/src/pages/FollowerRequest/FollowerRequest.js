@@ -24,6 +24,10 @@ const FollowerRequest = () => {
       M.toast({ html: res.message, classes: "success_Toast" });
     }
   };
+  // useEffect(()=>
+  // {
+  //   actionHandler()
+  // },[])
   return (
     <div className="Follower_Request_container">
       {data.length > 0 ? (

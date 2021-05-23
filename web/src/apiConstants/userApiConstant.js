@@ -9,3 +9,5 @@ export const putRequestDeleteUserRoute = () => "/requestDeleteFollowUser";
 export const postSearchUserRoute = () => "/search-users";
 
 export const putUnFollowUserRoute = () => "/unFollow";
+export const Alluser= () => "/Allusers";
+export const deleteselfrequest= () => "/deleteselfrequest";

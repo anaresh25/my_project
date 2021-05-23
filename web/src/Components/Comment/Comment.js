@@ -3,18 +3,10 @@ import "./Comment.css";
 import * as DashboardRoutes from "../../Routes/DashboardRoutes";
 import { Link } from "react-router-dom";
 
-import profileFunctions from "../../utils/profile";
-
-import DeleteIcon from '@material-ui/icons/Delete';
 
 const Comment = (props) => {
   const { val ,name, comment, profile_image, userId } = props;
-
-  const commentdelete = (id,user) =>{
-    console.log(id,user)
-    profileFunctions.CommentDel(id,user)
-  }
-
+  
   return (
     <div className="commentContainer">
       {profile_image && (
@@ -30,8 +22,7 @@ const Comment = (props) => {
           <span className="Modal_postedBy_Text">{name} </span>
         </Link>
         <span className="Modal_Comment_Text">{comment}</span>
-        <DeleteIcon onClick={()=>commentdelete(val,userId)}>delete</DeleteIcon>
-      </div>
+    </div>
     </div>
   );
 };

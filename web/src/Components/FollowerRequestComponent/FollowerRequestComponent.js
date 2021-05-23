@@ -13,6 +13,7 @@ const FollowerRequestComponent = (props) => {
       history.push(DashboardRoutes.createProfileRoute(userId));
     }
   };
+  
   return (
     <div className="FollowerRequestContainer" onClick={submit}>
       <img src={profile_image} className="FollowerRequestImg" />

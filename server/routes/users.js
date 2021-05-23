@@ -39,6 +39,16 @@ router.post(
   authController.requireLogin,
   userController.searchUser
 );
+router.get(
+  userRoutes.Users(),
+  authController.requireLogin,
+  userController.Users
+);
 
+router.delete(
+  userRoutes.deleteselfrequest(),
+  authController.requireLogin,
+  userController.selfrequestUser
+);
 
 module.exports = router;

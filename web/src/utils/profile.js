@@ -55,6 +55,7 @@ class profileFunctions {
       },
       body: JSON.stringify({ userId: userId }),
     });
+    console.log(res)
     res = res.json();
     return res;
   }
@@ -85,6 +86,7 @@ class profileFunctions {
     return res;
   }
 
+<<<<<<< HEAD
   static async Deletelfun(postId,history,userId) {
 
     let res = await fetch(PostApiConstant.postDeletePost(), {
@@ -114,7 +116,60 @@ class profileFunctions {
     res = res.json();
     return res;
   }
+=======
+static async Deletelfun(postId,userId,history) {
+  let res = await fetch(PostApiConstant.postDeletePost(), {
+    method: "delete",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: AuthConfigForWeb(),
+    },
+    body: JSON.stringify({ postId: postId }),
+  });
+  history.push(`/profile/${userId}`)
+  res = res.json();
+  return res;
+}
+static async CommentDel(postId,commentId) {
+  console.log(postId)
+  let res = await fetch(PostApiConstant.CommentDeletePost(), {
+    method: "delete",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: AuthConfigForWeb(),
+    },
+    body: JSON.stringify({ postId,commentId }),
+  });
+  res = res.json();
+  return res;
+}
+static async AllUSER() {
+ 
+  let res = await fetch(userApiConstant.Alluser(), {
+    method: "get",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: AuthConfigForWeb(),
+    },
+  });
+  res = res.json();
+  return res;
+}
+>>>>>>> 42e11b99842ce8f5affa30569caffb479e4ef6f8
 
+static async DeleteSelfRequest(userId) {
+  console.log("deeltere")
+  let res = await fetch(userApiConstant.deleteselfrequest(), {
+    method: "delete",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: AuthConfigForWeb(),
+    },
+    body: JSON.stringify({ userId: userId }),
+  });
+  res = res.json();
+  return res;
+}
 }
 
 
