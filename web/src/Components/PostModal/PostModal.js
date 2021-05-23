@@ -21,6 +21,7 @@ const PostModal = (props) => {
     allComments,
     createComment,
     userId,
+    postedBy
    
   } = props;
 console.log(profile_image)
@@ -71,6 +72,7 @@ console.log(profile_image)
             open={open}
             createComment={createComment}
             allComments={allComments}
+            postedBy={postedBy}
           />
         </div>
       </div>

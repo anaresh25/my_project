@@ -1,8 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useContext } from "react";
 import * as postApiConstant from "../../apiConstants/postApiConstant";
 import M from "materialize-css";
 import "./CreatePost.css";
+import * as DashboardRoutes from "../../Routes/DashboardRoutes";
 import { AuthConfigForWeb } from "../../apiConstants/jwtConstant";
+import { useHistory } from "react-router";
+import { UserContext } from "../../App";
 
 const CreatePost = () => {
   const [imagePreview, setImagePreview] = useState("");
@@ -10,7 +13,9 @@ const CreatePost = () => {
   const [image, setImage] = useState("");
   const fileRef = useRef(null);
   const [loading, setLoading] = useState(false);
-
+  const history = useHistory();
+  const { state, dispatch } = useContext(UserContext);
+  const { user } = state;
   const PostData = async () => {
     if (!image && !imagePreview) {
       M.toast({ html: "Please fill every input", classes: "error_Toast" });
@@ -36,6 +41,7 @@ const CreatePost = () => {
       } else {
         M.toast({ html: data.message, classes: "success_Toast" });
         // history.push("/");
+        history.push(DashboardRoutes.createProfileRoute(user._id));
       }
       setLoading(false);
       console.log(data);
@@ -57,7 +63,7 @@ const CreatePost = () => {
   return (
     <div className="Create_Post_Page_Container">
       <div className="Create_Post_Card">
-        <span className="instaGram">Create post</span>
+        <span className="echo">Create post</span>
         <div
           className="Upload_Image_Container"
           onClick={() => {
@@ -85,8 +91,8 @@ const CreatePost = () => {
           onChange={(e) => setCaption(e.target.value)}
         />
         {!loading ? (
-          <button className="authButton" onClick={PostData}>
-            Create
+          <button className="authbutton" onClick={PostData} >
+            Create 
           </button>
         ) : (
           <div className="Post_Title_Comment_Text">Uploading</div>

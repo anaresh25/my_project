@@ -2,10 +2,13 @@ import React from "react";
 import "./Comment.css";
 import * as DashboardRoutes from "../../Routes/DashboardRoutes";
 import { Link } from "react-router-dom";
+
 import profileFunctions from "../../utils/profile";
+
+import DeleteIcon from '@material-ui/icons/Delete';
+
 const Comment = (props) => {
-  console.log(props)
-  const { val,name, comment, profile_image, userId } = props;
+  const { val ,name, comment, profile_image, userId } = props;
 
        
   return (
@@ -23,7 +26,6 @@ const Comment = (props) => {
           <span className="Modal_postedBy_Text">{name} </span>
         </Link>
         <span className="Modal_Comment_Text">{comment}</span>
-      </div>
     </div>
   );
 };

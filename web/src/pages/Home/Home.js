@@ -31,7 +31,7 @@ const Home = () => {
   //   setOpen(false);
   // };
   return (
-    <div className="">
+    <div className="home" >
       <InfiniteScroll
         className="pageContainer"
         dataLength={data.length}
@@ -43,8 +43,9 @@ const Home = () => {
           </div>
         }
       >
+      
         {data.length === 0 ? (
-          <h1>We got nothing to show,follow someone</h1>
+          <h1>We got nothing to show,follow some user</h1>
         ) : null}
         {data.map((post, index) => {
           return (

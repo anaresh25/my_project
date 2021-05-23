@@ -19,8 +19,9 @@ const FetchFeedPost = () => {
           Authorization: AuthConfigForWeb(),
         },
       });
-
+      
       res = await res.json();
+      //console.log(state)
       console.log(res);
       if (res.error) {
         console.log(res);

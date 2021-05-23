@@ -11,3 +11,5 @@ export const createProfileFollowingDataRoute = (userId) => `/profile/${userId}/f
 export const createPostRoute = () => "/create";
 export const myfollowingpostRoute = () => "/myfollowingpost";
 export const followersRoute = () => "/followRequest";
+
+export const  postDeletePostRoute= (postId) =>"/deletePost";

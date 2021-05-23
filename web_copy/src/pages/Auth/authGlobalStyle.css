@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+.container {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  height: calc(100vh - 56px);
+  background-color: #F3EBF6;
+  font-family: 'Ubuntu', sans-serif;
+ 
+}
+
+
+.card {
+  background-color: #FFFFFF;
+  width: 400px;
+  height: 400px;
+  margin: 7em auto;
+  border-radius: 1.5em;
+  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+}
+
+.signup_card {
+  background-color: #FFFFFF;
+  width: 400px;
+  
+  margin: 7em auto;
+  border-radius: 1.5em;
+  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+}
+
+.input {
+  outline: none;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+  width: 100%;
+  font-size: 1.6rem;
+  font-family: inherit;
+  border-bottom: 2px solid #ccc;
+  margin: 0.6rem 0rem;
+  letter-spacing: 1.4px;
+}
+
+.input:focus {
+  border-bottom: 1px solid black;
+  box-shadow: 0 1px 0 0 #000;
+}
+
+.echo {
+  color: black;
+  text-decoration: none;
+  font-size: 2.4rem;
+  font-family: "Grand Hotel", cursive;
+}
+
+.descriptionText {
+  color: black;
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+}
+
+.authText{
+  color: black;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+}
+.forgot {
+  text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+  color: #E1BEE7;
+  padding-top: 15px;
+}
+
+.auth-nav-link{
+  text-decoration: none;
+  color: #E040FB;
+  
+  padding-top: 15px;
+}
+
+.authButton {
+  cursor: pointer;
+    border-radius: 5em;
+    color: #fff;
+    background: linear-gradient(to right, #9C27B0, #E040FB);
+    border: 0;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 35%;
+    font-size: 13px;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+    text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+    color: #E1BEE7;
+    text-decoration: none
+}
+
+.Sign_up_avatar{
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.sign {
+  padding-top: 40px;
+  color: #8C55AA;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+  font-size: 23px;
+}
+
+.un {
+  width: 76%;
+  color: rgb(38, 50, 56);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: rgba(136, 126, 126, 0.04);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  margin-bottom: 50px;
+  margin-left: 46px;
+  text-align: center;
+  margin-bottom: 27px;
+  font-family: 'Ubuntu', sans-serif;
+  }
+
+  .pass {
+    width: 76%;
+color: rgb(38, 50, 56);
+font-weight: 700;
+font-size: 14px;
+letter-spacing: 1px;
+background: rgba(136, 126, 126, 0.04);
+padding: 10px 20px;
+border: none;
+border-radius: 20px;
+outline: none;
+box-sizing: border-box;
+border: 2px solid rgba(0, 0, 0, 0.02);
+margin-bottom: 50px;
+margin-left: 46px;
+text-align: center;
+margin-bottom: 27px;
+font-family: 'Ubuntu', sans-serif;
+}
+
+.un:focus, .pass:focus {
+  border: 2px solid rgba(0, 0, 0, 0.18) !important;
+  
+}
+

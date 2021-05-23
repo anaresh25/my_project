@@ -1,6 +1,8 @@
 import * as userApiConstant from "../apiConstants/userApiConstant";
 import * as PostApiConstant from "../apiConstants/postApiConstant";
 import { AuthConfigForWeb } from "../apiConstants/jwtConstant";
+
+
 class profileFunctions {
   constructor() {}
 
@@ -11,6 +13,7 @@ class profileFunctions {
         Authorization: AuthConfigForWeb(),
       },
     });
+    //console.log(AuthConfigForWeb())
     res = res.json();
     return res;
   }
@@ -80,6 +83,7 @@ class profileFunctions {
     return res;
   }
 
+<<<<<<< HEAD
 static async Deletelfun(postId) {
   let res = await fetch(PostApiConstant.postDeletePost(), {
     method: "delete",
@@ -105,7 +109,39 @@ static async CommentDel(postId,commentId) {
   res = res.json();
   return res;
 }
+=======
+  static async Deletelfun(postId) {
+    let res = await fetch(PostApiConstant.postDeletePost(), {
+      method: "delete",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: AuthConfigForWeb(),
+      },
+      body: JSON.stringify({ postId: postId }),
+    });
+    res = res.json();
+    return res;
+  }
+
+  static async CommentDel(postId,user) {
+    console.log(postId)
+    let res = await fetch(PostApiConstant.CommentDeletePost(), {
+      method: "delete",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: AuthConfigForWeb(),
+      },
+      body: JSON.stringify({ postId,user }),
+    });
+    res = res.json();
+    return res;
+  }
+
+>>>>>>> cfc8d32e4691326e5d343364dac230d3b96f5c92
 }
+
+
+
 
 
 export default profileFunctions;
