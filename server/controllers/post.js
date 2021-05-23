@@ -186,6 +186,8 @@ exports.deletePost = async (req, res, next) => {
   console.log(_id,postId,"pressed_Delete_button")
   try {
     const checkIfPostExist = await Post.findOne({ _id: postId });
+    console.log(Post.findOne({ _id: postId }))
+    console.log(checkIfPostExist)
     if (checkIfPostExist.postedBy._id.toString() === _id.toString()) {
       const result = await checkIfPostExist.remove();
       console.log(result,"result")
@@ -201,22 +203,14 @@ exports.deletePost = async (req, res, next) => {
   }
 };
 
-exports.delete = async (req, res, next) => {
+exports.deleteComment =  (req, res, next) => {
   
-  const { postId } = req.body;
+  const { postId ,commentId} = req.body;
   const { _id } = req.user;
-  console.log(_id,postId,"pressed_Delete_button")
+  console.log(_id,postId,commentId,"pressed_Delete_comment")
   try {
-    // const checkIfPostExist = await Post.findOne({ _id: postId });
-    // if (checkIfPostExist.postedBy._id.toString() === _id.toString()) {
-    //   const result = await checkIfPostExist.remove();
-    //   console.log(result,"result")
-    //   console.log("dflsdjkflsdlf")
-    //   return res.json({ message: "successfully delete" });
-    // }
-    // else{
-    //   console.log("fldfksjdfflsskljjfd")
-    // }
+            Post.findOne({ _id: postId }).remove()
+    return res.json({ message: "successfully delete" });
   } catch (err) {
     console.log(err,"err")
     return res.status(402).json({ error: err });

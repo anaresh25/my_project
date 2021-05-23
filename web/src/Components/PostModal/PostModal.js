@@ -43,10 +43,11 @@ console.log(profile_image)
               userId={userId}
             />
             {allComments.map((comment, index) => {
+                {console.log(comment)}
               if (comment) {
                 return (
                   <Comment
-                    key={comment._id}
+                    val={comment._id}
                     name={comment.postedBy.name}
                     profile_image={comment.postedBy.profile_image}
                     comment={comment.comment}

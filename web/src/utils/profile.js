@@ -92,7 +92,7 @@ static async Deletelfun(postId) {
   res = res.json();
   return res;
 }
-static async CommentDel(postId,user) {
+static async CommentDel(postId,commentId) {
   console.log(postId)
   let res = await fetch(PostApiConstant.CommentDeletePost(), {
     method: "delete",
@@ -100,7 +100,7 @@ static async CommentDel(postId,user) {
       "Content-Type": "application/json",
       Authorization: AuthConfigForWeb(),
     },
-    body: JSON.stringify({ postId,user }),
+    body: JSON.stringify({ postId,commentId }),
   });
   res = res.json();
   return res;

@@ -7,12 +7,7 @@ const Comment = (props) => {
   console.log(props)
   const { val,name, comment, profile_image, userId } = props;
 
-        const commentdelete =(id,user)=>
-        {
-               console.log(id,user)
-                profileFunctions.CommentDel(id,user)
-        }
-      
+       
   return (
     <div className="commentContainer">
       {profile_image && (
@@ -28,7 +23,6 @@ const Comment = (props) => {
           <span className="Modal_postedBy_Text">{name} </span>
         </Link>
         <span className="Modal_Comment_Text">{comment}</span>
-        <button onClick={()=>commentdelete(val,userId)}>delete</button>
       </div>
     </div>
   );
