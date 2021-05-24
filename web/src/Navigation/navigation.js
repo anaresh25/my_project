@@ -20,7 +20,9 @@ import AllUser from '../Components/SearchModal/Alluser'
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import NotificationsOffIcon from '@material-ui/icons/NotificationsOff';
 import Badge from '@material-ui/core/Badge';
-import MailIcon from '@material-ui/icons/Mail';
+
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import IconButton from '@material-ui/core/IconButton';
 
 const Navigation = () => {
   const { state, dispatch } = useContext(UserContext);
@@ -72,13 +74,17 @@ const [searchuser,setsearchuser] =useState(false)
                   <MdSearch size={iconSize} onClick={()=>setsearchuser(!searchuser)}  style={{cursor:"pointer"}} />
                   <span className="nav-link" style={{cursor:"default"}}>Search</span>
                 </li>
-                <li onClick={navigateToCreate}>
-                  <MdAdd size={iconSize}  style={{cursor:"pointer"}} />
-                  <span className="nav-link" style={{cursor:"default"}} >Create</span>
+                <li onClick={navigateToCreate}  >
+                  {/* <MdAdd size={iconSize}  style={{cursor:"pointer"}} /> */}
+                  <IconButton color="primary" aria-label="upload picture" component="span" >
+                    <PhotoCamera />
+                  </IconButton>
+                  <span className="nav-link"  style={{cursor:"default"}} >Create</span>
+                  
                 </li>
                 <li onClick={navigateToRequest}>
                   {/* <FaUserFriends size={iconSize} /> */}
-                  {(data.length)?<Badge badgeContent={data.length} color="secondary"> <NotificationsIcon color="primary"/> </Badge>:<NotificationsOffIcon />}
+                  {(data.length)?<Badge badgeContent={data.length} color="secondary"> <NotificationsIcon color="primary" max={3}/> </Badge>:<NotificationsOffIcon />}
                   <span className="nav-link" style={{cursor:"default"}} >Follow Requests</span>
                   
           

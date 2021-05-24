@@ -12,6 +12,11 @@ import { useHistory } from "react-router-dom";
 
 
  import DeleteIcon from '@material-ui/icons/Delete';
+ import TextField from '@material-ui/core/TextField';
+ import Button from '@material-ui/core/Button';
+ import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
+import Badge from '@material-ui/core/Badge';
+
 // import { useDispatch } from 'react-redux';
 
 import { AuthConfigForWeb } from "../../apiConstants/jwtConstant";
@@ -80,7 +85,19 @@ const a = localStorage.getItem('user')
           size={iconSize}
           style={{ color: "black", marginLeft: "10px" }}
         /> */}
-      <p className="Post_Title_Text"> &nbsp;{hookTotalLikes} </p>
+      {/* <p className="Post_Title_Text">&nbsp;{hookTotalLikes} </p> */}
+      <Badge
+        color="secondary"
+        badgeContent={hookTotalLikes}
+        anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+        max={9}
+        }}
+      >
+      &nbsp;<ThumbUpAltOutlinedIcon color="primary"/>
+        
+      </Badge>
 
 
 
@@ -89,7 +106,7 @@ const a = localStorage.getItem('user')
       
       : null}
       </div>
-
+ 
       {wantName ? (
         <div>
           <div className="Post_Row_Container">
@@ -127,23 +144,22 @@ const a = localStorage.getItem('user')
 
       <div
         className="Post_Row_Container"
+        
         style={{ alignItems: "none", margin: "0.2rem 0" }}
       >
-        <input
-          placeholder="add a comment"
-          className="inputComment"
-          value={commentText}
-          onKeyUp={(e) => {
-            if (e.key === " ") {
-              setCommentText((prev) => prev + " ");
-            }
-          }}
-          onChange={(e) => setCommentText(e.target.value)}
+      
+        <Button variant="contained" color="secondary"  onClick={createCommentFunc} >Comment</Button>
+        
+        <TextField id="standard-basic" label="Comment" value={commentText}  className="inputComment"
+        onKeyUp={(e) => {
+          if (e.key === " ") {
+            setCommentText((prev) => prev + " ");
+          }
+        }}
+        onChange={(e) => setCommentText(e.target.value)}
+        size="small"
         />
 
-        <button  onClick={createCommentFunc}>
-           Post
-        </button>
       </div>
     </div>
   );
