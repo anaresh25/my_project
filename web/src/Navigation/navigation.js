@@ -84,7 +84,7 @@ const [searchuser,setsearchuser] =useState(false)
                 </li>
                 <li onClick={navigateToRequest}>
                   {/* <FaUserFriends size={iconSize} /> */}
-                  {(data.length)?<Badge badgeContent={data.length} color="secondary"> <NotificationsIcon color="primary" max={3}/> </Badge>:<NotificationsOffIcon />}
+                  {(data.length)?<Badge badgeContent={data.length} color="secondary"> <NotificationsIcon color="primary" max={9}/> </Badge>:<NotificationsOffIcon />}
                   <span className="nav-link" style={{cursor:"default"}} >Follow Requests</span>
                   
           
