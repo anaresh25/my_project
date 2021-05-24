@@ -17,6 +17,11 @@ import SearchModal from "../Components/SearchModal/SearchModal";
 import "./navigation.css";
 import AllUser from '../Components/SearchModal/Alluser'
 
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import NotificationsOffIcon from '@material-ui/icons/NotificationsOff';
+import Badge from '@material-ui/core/Badge';
+import MailIcon from '@material-ui/icons/Mail';
+
 const Navigation = () => {
   const { state, dispatch } = useContext(UserContext);
   const [users,setusers] =useState(false)
@@ -52,7 +57,7 @@ const [searchuser,setsearchuser] =useState(false)
           <li> 
             <div className="dropdown">
               <div className="nav-profile-container">
-                <img src={user.profile_image} className="nav-profile" />
+                <img src={user.profile_image} className="nav-profile"  style={{cursor:"pointer"}} />
                 <span className="nav-link" style={{ fontSize: "1.6rem" ,cursor:"default" }}  >
                   {user.name}
                 </span>
@@ -60,30 +65,33 @@ const [searchuser,setsearchuser] =useState(false)
 
               <div class="dropdown-content">
                 <li onClick={navigateToProfile}>
-                  <CgProfile size={iconSize} />
-                  <span className="nav-link">Profile</span>
+                  <CgProfile size={iconSize}  style={{cursor:"pointer"}} />
+                  <span className="nav-link" style={{cursor:"default"}}>Profile</span>
                 </li>
                 <li onClick={open}>
-                  <MdSearch size={iconSize} onClick={()=>setsearchuser(!searchuser)} />
-                  <span className="nav-link">Search</span>
+                  <MdSearch size={iconSize} onClick={()=>setsearchuser(!searchuser)}  style={{cursor:"pointer"}} />
+                  <span className="nav-link" style={{cursor:"default"}}>Search</span>
                 </li>
                 <li onClick={navigateToCreate}>
-                  <MdAdd size={iconSize} />
-                  <span className="nav-link">Create</span>
+                  <MdAdd size={iconSize}  style={{cursor:"pointer"}} />
+                  <span className="nav-link" style={{cursor:"default"}} >Create</span>
                 </li>
                 <li onClick={navigateToRequest}>
-                  <FaUserFriends size={iconSize} />
-                  <span className="nav-link">Follow Requests</span><em style={{background:'red',margin:"10px",borderRadius:"1%"}}>{data.length}</em>
+                  {/* <FaUserFriends size={iconSize} /> */}
+                  {(data.length)?<Badge badgeContent={data.length} color="secondary"> <NotificationsIcon color="primary"/> </Badge>:<NotificationsOffIcon />}
+                  <span className="nav-link" style={{cursor:"default"}} >Follow Requests</span>
+                  
+          
                 </li>
-                <li onClick={open}>
-                  <FaUserFriends size={iconSize} onClick={()=>setusers(!users)} />
-                  <span className="nav-link">All User</span>
+                <li onClick={open}  >
+                  <FaUserFriends size={iconSize} onClick={()=>setusers(!users)}  style={{cursor:"pointer"}} />
+                  <span className="nav-link" style={{cursor:"default"}} >All User</span>
                 </li>
                 <li
                   style={{ borderTop: "1px solid grey" }}
                   onClick={logoutFunc}
                 >
-                  <span className="nav-link"> Logout</span>
+                  <span className="nav-link" style={{cursor:"default"}} > Logout</span>
                 </li>
               </div>
             </div>
