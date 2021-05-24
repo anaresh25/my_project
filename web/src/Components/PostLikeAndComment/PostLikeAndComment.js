@@ -92,8 +92,8 @@ const a = localStorage.getItem('user')
         anchorOrigin={{
         vertical: 'top',
         horizontal: 'right',
-        max={9}
         }}
+        max={9}
       >
       &nbsp;<ThumbUpAltOutlinedIcon color="primary"/>
         
