@@ -20,14 +20,25 @@ import AllUser from '../Components/SearchModal/Alluser'
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import NotificationsOffIcon from '@material-ui/icons/NotificationsOff';
 import Badge from '@material-ui/core/Badge';
+import PersonIcon from '@material-ui/icons/Person';
+import GroupIcon from '@material-ui/icons/Group';
+import InputBase from '@material-ui/core/InputBase';
 
+// import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import { makeStyles } from '@material-ui/core/styles';
+// import SearchBar from "material-ui-search-bar";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import SearchIcon from '@material-ui/icons/Search';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import IconButton from '@material-ui/core/IconButton';
+import { Button } from "@material-ui/core";
+
+
 
 const Navigation = () => {
   const { state, dispatch } = useContext(UserContext);
   const [users,setusers] =useState(false)
-const [searchuser,setsearchuser] =useState(false)
+  const [searchuser,setsearchuser] =useState(false)
   const { user } = state;
   const [Modal, open, close, isOpen] = useModal("root", {
     preventScroll: true,
@@ -35,7 +46,7 @@ const [searchuser,setsearchuser] =useState(false)
   const history = useHistory();
   const iconSize = 26;
   const data = state.user ? state.user.requestedBy : [];
-
+ 
   const renderList = useCallback(() => {
     const logoutFunc = () => {
       localStorage.clear();
@@ -52,10 +63,11 @@ const [searchuser,setsearchuser] =useState(false)
       history.push(DashboardRoutes.followersRoute());
     };
    
+
+
     if (user) {
       return (
         <>
-
           <li> 
             <div className="dropdown">
               <div className="nav-profile-container">
@@ -67,18 +79,18 @@ const [searchuser,setsearchuser] =useState(false)
 
               <div class="dropdown-content">
                 <li onClick={navigateToProfile}>
-                  <CgProfile size={iconSize}  style={{cursor:"pointer"}} />
+                  <PersonIcon color="primary"  />
                   <span className="nav-link" style={{cursor:"default"}}>Profile</span>
                 </li>
                 <li onClick={open}>
-                  <MdSearch size={iconSize} onClick={()=>setsearchuser(!searchuser)}  style={{cursor:"pointer"}} />
+                  <SearchIcon size={iconSize} onClick={()=>setsearchuser(!searchuser)}  style={{cursor:"pointer"}} color="action" />
                   <span className="nav-link" style={{cursor:"default"}}>Search</span>
                 </li>
                 <li onClick={navigateToCreate}  >
-                  {/* <MdAdd size={iconSize}  style={{cursor:"pointer"}} /> */}
-                  <IconButton color="primary" aria-label="upload picture" component="span" >
-                    <PhotoCamera />
-                  </IconButton>
+                  {/* <IconButton color="primary" aria-label="upload picture" component="span" >
+                    
+                  </IconButton> */}
+                  <PhotoCamera />
                   <span className="nav-link"  style={{cursor:"default"}} >Create</span>
                   
                 </li>
@@ -90,7 +102,7 @@ const [searchuser,setsearchuser] =useState(false)
           
                 </li>
                 <li onClick={open}  >
-                  <FaUserFriends size={iconSize} onClick={()=>setusers(!users)}  style={{cursor:"pointer"}} />
+                  <GroupIcon color="disabled" fontSize="large" onClick={()=>setusers(!users)}  />
                   <span className="nav-link" style={{cursor:"default"}} >All User</span>
                 </li>
                 <li
@@ -102,12 +114,14 @@ const [searchuser,setsearchuser] =useState(false)
               </div>
             </div>
           </li>
-          <li
+          <Button
+                  variant="contained" color="default"
                   style={{cursor:"pointer"}}
                   onClick={logoutFunc}
+                  startIcon={<ExitToAppIcon />}
                 >
-                  <span className="nav-link"> Logout</span>
-                </li>
+                   Logout
+                </Button>
         </>
       );
     } else {
