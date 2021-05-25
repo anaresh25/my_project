@@ -62,7 +62,7 @@ const PostLikeAndComment = (props) => {
 
 const a = localStorage.getItem('user')
  const use= JSON.parse(a)._id
- console.log(use,userId)
+ //console.log(use,userId)
   return (
     <div className="Post_Detail_Container">
       <div className="Post_Row_Container" style={{ marginLeft: "-0.5rem" }}>
@@ -102,7 +102,8 @@ const a = localStorage.getItem('user')
 
 
       {(use===userId)?
-      <DeleteIcon  type="submit" onClick= { ()=>profileFunctions.Deletelfun(postId,history,userId)  } />
+      
+      <DeleteIcon style={{marginLeft:"auto"}} type="submit" onClick= { ()=>profileFunctions.Deletelfun(postId,userId)  } />
       
       : null}
       </div>
@@ -119,6 +120,7 @@ const a = localStorage.getItem('user')
             <span className="Post_Title_Comment_Text"> {caption}</span>
           </div>
           <div className="Post_comment_text">
+            {/* {console.log(allComments)} */}
             <span onClick={open}>
               {allComments.length > 0
                 ? `View all ${allComments.length} comments`
@@ -135,6 +137,7 @@ const a = localStorage.getItem('user')
                   name={comment.postedBy.name}
                   comment={comment.comment}
                   userId={comment.postedBy._id}
+                  postId={postId}
                 />
               );
             } 
@@ -148,17 +151,19 @@ const a = localStorage.getItem('user')
         style={{ alignItems: "none", margin: "0.2rem 0" }}
       >
       
-        <Button variant="contained" color="secondary"  onClick={createCommentFunc} >Comment</Button>
         
         <TextField id="standard-basic" label="Comment" value={commentText}  className="inputComment"
         onKeyUp={(e) => {
           if (e.key === " ") {
             setCommentText((prev) => prev + " ");
           }
+          
         }}
         onChange={(e) => setCommentText(e.target.value)}
         size="small"
         />
+        <Button variant="contained" color="secondary"  onClick={createCommentFunc} >Comment</Button>
+
 
       </div>
     </div>

@@ -186,16 +186,16 @@ exports.deletePost = async (req, res, next) => {
   console.log(_id,postId,"pressed_Delete_button")
   try {
     const checkIfPostExist = await Post.findOne({ _id: postId });
-    console.log(Post.findOne({ _id: postId }))
-    console.log(checkIfPostExist)
+    //console.log(Post.findOne({ _id: postId }))
+    //console.log(checkIfPostExist)
     if (checkIfPostExist.postedBy._id.toString() === _id.toString()) {
       const result = await checkIfPostExist.remove();
-      console.log(result,"result")
-      console.log("dflsdjkflsdlf")
+      //console.log(result,"result")
+      //console.log("dflsdjkflsdlf")
       return res.json({ message: "successfully delete" });
     }
     else{
-      console.log("fldfksjdfflsskljjfd")
+      console.log("Post is not Exist")
     }
   } catch (err) {
     console.log(err,"err")
@@ -203,16 +203,40 @@ exports.deletePost = async (req, res, next) => {
   }
 };
 
+// exports.CommentDeletePost = async (req, res, next) => {
+
+//   console.log("hello comment")
+//   const { postId,user,val} = req.body;
+//   const { _id } = req.user;
+//   console.log("postId",postId,_id,user,val,"pressed_Delete_comment")
+//   try {
+//             //console.log("Post",Post.findOne({_id: val}))
+//             Post.findOne({ _id: val }).remove();
+//             return res.json({ message: "successfully delete" });
+//   } catch (err) {
+//     console.log(err,"err")
+//     return res.status(402).json({ error: err });
+//   }
+// };
+
 exports.CommentDeletePost = async (req, res, next) => {
-  
-  const { postId ,commentId} = req.body;
+  const { postId,user,val} = req.body;
   const { _id } = req.user;
-  console.log(_id,postId,commentId,"pressed_Delete_comment")
-  try {
-            Post.findOne({ _id: postId }).remove()
-    return res.json({ message: "successfully delete" });
-  } catch (err) {
-    console.log(err,"err")
-    return res.status(402).json({ error: err });
-  }
+  Post.findByIdAndUpdate( postId,{
+    $pull : { comments : {_id: val }}
+  },{
+    new : true
+  }).populate("comments.postedBy","_id name")
+  .exec((err,result) =>{
+    if(err){
+      return res.status(422).json({
+        error:err
+      })
+    }else{
+      res.json({message:"successfully delete"});
+      console.log("Deleted ")
+    }
+  })
+
+
 };

@@ -13,7 +13,10 @@ const CommentPostHook = (comments) => {
       const name = state.user.name;
       const profile_image = state.user.profile_image;
       const postedBy = { name: name, profile_image: profile_image };
-
+      // useEffect(() => {
+        
+        
+      // }, [])
       setAllComments((prevData) => [...prevData, { _id, postedBy, comment }]);
       let res = await fetch(postApiConstant.putCommentPostRoute(), {
         method: "put",
