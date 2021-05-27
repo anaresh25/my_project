@@ -11,6 +11,7 @@ exports.postSignUp = async (req, res, next) => {
     return res.status(402).json({ error: "Please add all details" });
   }
 
+  // console.log(media,"hello")
   const checkUserExist = await User.findOne({ email: email });
   if (checkUserExist) {
     return res
@@ -19,10 +20,18 @@ exports.postSignUp = async (req, res, next) => {
   }
 
   const hashedPassword = await bcrypt.hash(password, 12);
-  const mediaRes = await cloudinary.uploader.upload(media);
+  // const mediaRes = await cloudinary.uploader.upload(media); 
+  // console.log(mediaRes.type)
+   media? mediaRes=await cloudinary.uploader.upload(media):null;
+  // if(media){
+  //  // console.log(cloudinary.uploader.upload(media))
+  //   mediaRes = await cloudinary.uploader.upload(media);
+  // }
+
+  //console.log(media,"media",mediaRes,"hello")
   const user = new User({
     email: email,
-    profile_image: mediaRes.url,
+    profile_image: media ? mediaRes.url : "https://res.cloudinary.com/m180281ca/image/upload/v1618759965/default_empty_lcp2zv.jpg" ,
     password: hashedPassword,
     name: name,
   });

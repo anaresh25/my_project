@@ -184,7 +184,7 @@ const Profile = () => {
             <span className="Profile_Info_Text" onClick={navigateToFollowers}>
               {!loading ? totalFollowers : "loading"} followers
             </span>
-            <span className="Profile_Info_Text" onClick={navigateToFollowing}>
+            <span className="Profile_Info_Text" onClick={navigateToFollowing}  >
               {!loading ? totalFollowing : "loading"} following
             </span>
           </div>

@@ -6,11 +6,6 @@ import { Link } from "react-router-dom";
 import PostLikeAndComment from "../PostLikeAndComment/PostLikeAndComment";
 
 
-// import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
-// import DeleteIcon from '@material-ui/icons/Delete';
-// import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-// import ThumbUpAltOutlined from '@material-ui/icons/ThumbUpAltOutlined';
-
 import PostModal from "../PostModal/PostModal";
 import useModal from "react-hooks-use-modal";
 import "./PostCard.css";

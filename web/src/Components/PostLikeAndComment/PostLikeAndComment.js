@@ -10,9 +10,19 @@ import { Link } from "react-router-dom";
 import profileFunctions from "../../utils/profile";
 import { useHistory } from "react-router-dom";
 
+
+ import DeleteIcon from '@material-ui/icons/Delete';
+ import TextField from '@material-ui/core/TextField';
+ import Button from '@material-ui/core/Button';
+ import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
+import Badge from '@material-ui/core/Badge';
+
 // import { useDispatch } from 'react-redux';
 
 import { AuthConfigForWeb } from "../../apiConstants/jwtConstant";
+
+// import { useHistory } from "react-router-dom";
+
 
 
 const PostLikeAndComment = (props) => {
@@ -37,8 +47,7 @@ const PostLikeAndComment = (props) => {
   const iconSize = 30;
 
 
-  // const dispatch = useDispatch();
-const history = useHistory()
+  const history = useHistory();
 
 
   const createCommentFunc = () => {
@@ -53,7 +62,7 @@ const history = useHistory()
 
 const a = localStorage.getItem('user')
  const use= JSON.parse(a)._id
- console.log(use,userId)
+ //console.log(use,userId)
   return (
     <div className="Post_Detail_Container">
       <div className="Post_Row_Container" style={{ marginLeft: "-0.5rem" }}>
@@ -76,13 +85,29 @@ const a = localStorage.getItem('user')
           size={iconSize}
           style={{ color: "black", marginLeft: "10px" }}
         /> */}
-      <p className="Post_Title_Text"> &nbsp;{hookTotalLikes} </p>
+      {/* <p className="Post_Title_Text">&nbsp;{hookTotalLikes} </p> */}
+      <Badge
+        color="secondary"
+        badgeContent={hookTotalLikes}
+        anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+        }}
+        max={9}
+      >
+      &nbsp;<ThumbUpAltOutlinedIcon color="primary"/>
+        
+      </Badge>
 
-      {(use===userId)?  
-          <button   type="submit" onClick= { ()=>profileFunctions.Deletelfun(postId,userId,history)}>delete</button>
+
+
+      {(use===userId)?
+      
+      <DeleteIcon style={{marginLeft:"auto"}} type="submit" onClick= { ()=>profileFunctions.Deletelfun(postId,userId)  } />
+      
       : null}
       </div>
-
+ 
       {wantName ? (
         <div>
           <div className="Post_Row_Container">
@@ -95,6 +120,7 @@ const a = localStorage.getItem('user')
             <span className="Post_Title_Comment_Text"> {caption}</span>
           </div>
           <div className="Post_comment_text">
+            {/* {console.log(allComments)} */}
             <span onClick={open}>
               {allComments.length > 0
                 ? `View all ${allComments.length} comments`
@@ -111,6 +137,7 @@ const a = localStorage.getItem('user')
                   name={comment.postedBy.name}
                   comment={comment.comment}
                   userId={comment.postedBy._id}
+                  postId={postId}
                 />
               );
             } 
@@ -120,23 +147,24 @@ const a = localStorage.getItem('user')
 
       <div
         className="Post_Row_Container"
+        
         style={{ alignItems: "none", margin: "0.2rem 0" }}
       >
-        <input
-          placeholder="add a comment"
-          className="inputComment"
-          value={commentText}
-          onKeyUp={(e) => {
-            if (e.key === " ") {
-              setCommentText((prev) => prev + " ");
-            }
-          }}
-          onChange={(e) => setCommentText(e.target.value)}
+      
+        
+        <TextField id="standard-basic" label="Comment" value={commentText}  className="inputComment"
+        onKeyUp={(e) => {
+          if (e.key === " ") {
+            setCommentText((prev) => prev + " ");
+          }
+          
+        }}
+        onChange={(e) => setCommentText(e.target.value)}
+        size="small"
         />
+        <Button variant="contained" color="secondary"  onClick={createCommentFunc} >Comment</Button>
 
-        <button  onClick={createCommentFunc}>
-           Post
-        </button>
+
       </div>
     </div>
   );

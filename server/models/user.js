@@ -16,6 +16,8 @@ const userSchema = new mongoose.Schema(
     },
     profile_image: {
       type: Object,
+      // required: true,
+      default:"https://res.cloudinary.com/m180281ca/image/upload/v1618759965/default_empty_lcp2zv.jpg"
     },
     followers: [
       {

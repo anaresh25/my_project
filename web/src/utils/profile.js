@@ -1,11 +1,14 @@
 import * as userApiConstant from "../apiConstants/userApiConstant";
 import * as PostApiConstant from "../apiConstants/postApiConstant";
 import { AuthConfigForWeb } from "../apiConstants/jwtConstant";
+// import * as DashboardRoutes from "../Routes/DashboardRoutes";
+import M from "materialize-css";
 
 
 class profileFunctions {
   constructor() {}
 
+  
   static async fetchProfile(userId) {
     let res = await fetch(userApiConstant.getUserRoute(userId), {
       method: "get",
@@ -84,6 +87,46 @@ class profileFunctions {
     return res;
   }
 
+
+  static async Deletelfun(postId,userId) {
+
+    let res = await fetch(PostApiConstant.postDeletePost(), {
+      method: "delete",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: AuthConfigForWeb(),
+      },
+      body: JSON.stringify({ postId: postId }),
+    });
+    //history.push(`/profile/${userId}`)
+    res = res.json();
+    return res;
+    //DashboardRoutes.profileRoute()
+  }
+
+  static async CommentDel(postId,user,val) {
+    console.log("postId",postId,"comment_By",user,"comment_ID",val)
+    let res = await fetch(PostApiConstant.CommentDeletePost(), {
+      method: "delete",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: AuthConfigForWeb(),
+      },
+      body: JSON.stringify({postId,user,val }),
+    });
+    //res = res.json();
+    const data = res.json();
+    console.log({data})
+      if (data.error) {
+        M.toast({ html: data.error, classes: "error_Toast" });
+      } else {
+        M.toast({ html:"comment deleted", classes: "success_Toast" });
+
+      }
+    return data;
+    
+  }
+
 static async Deletelfun(postId,userId,history) {
   let res = await fetch(PostApiConstant.postDeletePost(), {
     method: "delete",
@@ -97,19 +140,19 @@ static async Deletelfun(postId,userId,history) {
   res = res.json();
   return res;
 }
-static async CommentDel(postId,commentId) {
-  console.log(postId)
-  let res = await fetch(PostApiConstant.CommentDeletePost(), {
-    method: "delete",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: AuthConfigForWeb(),
-    },
-    body: JSON.stringify({ postId,commentId }),
-  });
-  res = res.json();
-  return res;
-}
+// static async CommentDel(postId,commentId) {
+//   console.log(postId)
+//   let res = await fetch(PostApiConstant.CommentDeletePost(), {
+//     method: "delete",
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: AuthConfigForWeb(),
+//     },
+//     body: JSON.stringify({ postId,commentId }),
+//   });
+//   res = res.json();
+//   return res;
+// }
 static async AllUSER() {
  
   let res = await fetch(userApiConstant.Alluser(), {
@@ -122,6 +165,7 @@ static async AllUSER() {
   res = res.json();
   return res;
 }
+
 
 static async DeleteSelfRequest(userId) {
   console.log("deeltere")

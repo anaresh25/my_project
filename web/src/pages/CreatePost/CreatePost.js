@@ -7,6 +7,12 @@ import { AuthConfigForWeb } from "../../apiConstants/jwtConstant";
 import { useHistory } from "react-router";
 import { UserContext } from "../../App";
 
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
+
+
 const CreatePost = () => {
   const [imagePreview, setImagePreview] = useState("");
   const [caption, setCaption] = useState("");
@@ -71,7 +77,8 @@ const CreatePost = () => {
           }}
         >
           {!imagePreview ? (
-            <span className="Post_Title_Comment_Text">Upload Image</span>
+            // <span className="Post_Title_Comment_Text">Upload Image</span>
+            <PhotoCamera/>
           ) : (
             <img src={imagePreview} className="Upload_Image" />
           )}
@@ -83,17 +90,26 @@ const CreatePost = () => {
             accept="imagePreview/*"
           />
         </div>
-        <input
+        {/* <input
           type="text"
           placeholder="enter a caption"
           className="input"
           value={caption}
           onChange={(e) => setCaption(e.target.value)}
+        /> */}
+        <TextField id="standard-basic" label="Caption" 
+        type="text"
+        className="input"
+        value={caption}
+        onChange={(e) => setCaption(e.target.value)}
         />
         {!loading ? (
-          <button className="authbutton" onClick={PostData} >
-            Create 
-          </button>
+          // <button className="authbutton" onClick={PostData} >
+          //   Create 
+          // </button>
+          <Button variant="contained" color="default" onClick={PostData} style={{marginTop:"5px"}} startIcon={<CloudUploadIcon />}>
+          Upload
+        </Button>
         ) : (
           <div className="Post_Title_Comment_Text">Uploading</div>
         )}

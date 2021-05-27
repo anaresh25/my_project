@@ -17,10 +17,28 @@ import SearchModal from "../Components/SearchModal/SearchModal";
 import "./navigation.css";
 import AllUser from '../Components/SearchModal/Alluser'
 
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import NotificationsOffIcon from '@material-ui/icons/NotificationsOff';
+import Badge from '@material-ui/core/Badge';
+import PersonIcon from '@material-ui/icons/Person';
+import GroupIcon from '@material-ui/icons/Group';
+import InputBase from '@material-ui/core/InputBase';
+
+// import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import { makeStyles } from '@material-ui/core/styles';
+// import SearchBar from "material-ui-search-bar";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import SearchIcon from '@material-ui/icons/Search';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import IconButton from '@material-ui/core/IconButton';
+import { Button } from "@material-ui/core";
+
+
+
 const Navigation = () => {
   const { state, dispatch } = useContext(UserContext);
   const [users,setusers] =useState(false)
-const [searchuser,setsearchuser] =useState(false)
+  const [searchuser,setsearchuser] =useState(false)
   const { user } = state;
   const [Modal, open, close, isOpen] = useModal("root", {
     preventScroll: true,
@@ -28,7 +46,7 @@ const [searchuser,setsearchuser] =useState(false)
   const history = useHistory();
   const iconSize = 26;
   const data = state.user ? state.user.requestedBy : [];
-
+ 
   const renderList = useCallback(() => {
     const logoutFunc = () => {
       localStorage.clear();
@@ -45,48 +63,65 @@ const [searchuser,setsearchuser] =useState(false)
       history.push(DashboardRoutes.followersRoute());
     };
    
+
+
     if (user) {
       return (
         <>
-          <li>
+          <li> 
             <div className="dropdown">
               <div className="nav-profile-container">
-                <img src={user.profile_image} className="nav-profile" />
-                <span className="nav-link" style={{ fontSize: "1.6rem" }}>
+                <img src={user.profile_image} className="nav-profile"  style={{cursor:"pointer"}} />
+                <span className="nav-link" style={{ fontSize: "1.6rem" ,cursor:"default" }}  >
                   {user.name}
                 </span>
               </div>
 
               <div class="dropdown-content">
                 <li onClick={navigateToProfile}>
-                  <CgProfile size={iconSize} />
-                  <span className="nav-link">Profile</span>
+                  <PersonIcon color="primary"  />
+                  <span className="nav-link" style={{cursor:"default"}}>Profile</span>
                 </li>
                 <li onClick={open}>
-                  <MdSearch size={iconSize} onClick={()=>setsearchuser(!searchuser)} />
-                  <span className="nav-link">Search</span>
+                  <SearchIcon size={iconSize} onClick={()=>setsearchuser(!searchuser)}  style={{cursor:"pointer"}} color="action" />
+                  <span className="nav-link" style={{cursor:"default"}}>Search</span>
                 </li>
-                <li onClick={navigateToCreate}>
-                  <MdAdd size={iconSize} />
-                  <span className="nav-link">Create</span>
+                <li onClick={navigateToCreate}  >
+                  {/* <IconButton color="primary" aria-label="upload picture" component="span" >
+                    
+                  </IconButton> */}
+                  <PhotoCamera />
+                  <span className="nav-link"  style={{cursor:"default"}} >Create</span>
+                  
                 </li>
                 <li onClick={navigateToRequest}>
-                  <FaUserFriends size={iconSize} />
-                  <span className="nav-link">Follow Requests</span><em style={{background:'red',margin:"10px",borderRadius:"1%"}}>{data.length}</em>
+                  {/* <FaUserFriends size={iconSize} /> */}
+                  {(data.length)?<Badge badgeContent={data.length} color="secondary"> <NotificationsIcon color="primary" max={9}/> </Badge>:<NotificationsOffIcon />}
+                  <span className="nav-link" style={{cursor:"default"}} >Follow Requests</span>
+                  
+          
                 </li>
-                <li onClick={open}>
-                  <FaUserFriends size={iconSize} onClick={()=>setusers(!users)} />
-                  <span className="nav-link">All User</span>
+                <li onClick={open}  >
+                  <GroupIcon color="disabled" fontSize="large" onClick={()=>setusers(!users)}  />
+                  <span className="nav-link" style={{cursor:"default"}} >All User</span>
                 </li>
                 <li
                   style={{ borderTop: "1px solid grey" }}
                   onClick={logoutFunc}
                 >
-                  <span className="nav-link"> Logout</span>
+                  <span className="nav-link" style={{cursor:"default"}} > Logout</span>
                 </li>
               </div>
             </div>
           </li>
+          <Button
+                  variant="contained" color="default"
+                  style={{cursor:"pointer"}}
+                  onClick={logoutFunc}
+                  startIcon={<ExitToAppIcon />}
+                >
+                   Logout
+                </Button>
         </>
       );
     } else {
