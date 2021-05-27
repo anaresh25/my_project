@@ -7,7 +7,7 @@ const cloudinary = require("../utils/cloudinary");
 
 exports.postSignUp = async (req, res, next) => {
   const { name, email, password, media } = req.body;
-  if (!email || !password || !name || !media) {
+  if (!email || !password || !name ) {
     return res.status(402).json({ error: "Please add all details" });
   }
 

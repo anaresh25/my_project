@@ -59,5 +59,10 @@ router.delete(
   postController.deleteComment
 );
 
+router.put(
+  postRoutes.EditPost(),
+  authController.requireLogin,
+  postController.EditPost
+);
 
 module.exports = router;

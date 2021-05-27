@@ -216,3 +216,38 @@ exports.deleteComment =  (req, res, next) => {
     return res.status(402).json({ error: err });
   }
 };
+
+
+exports.EditPost = async (req, res, next) => {
+  const { userId} = req.body;
+ console.log("sdfdfsjk")
+  // if (!caption || !media) {
+  //   return res.status(402).json({ error: "Please add all details" });
+  // }
+   
+  // req.user.password = undefined;
+  edit = await findOne(userId)
+        console.log(edit,"lkjj")
+  let edit;
+  try
+  {
+          
+          // try {
+          //   const mediaRes = await cloudinary.uploader.upload(media);
+          //   const post = new Post({
+          //     caption,
+          //     media: mediaRes.url,
+          //     postedBy: req.user,
+          //   });
+          //   const newPost = await post.save();
+            return res.json({ message: "New post created" });
+          // } catch (err) {
+          //   console.log(err);
+          //   res.status(402).json({ error: err });
+          // }
+  }
+  catch(err)
+  {
+    res.status(402).json({ error: err });
+  }
+};
