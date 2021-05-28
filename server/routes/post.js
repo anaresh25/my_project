@@ -60,6 +60,12 @@ router.delete(
   postController.CommentDeletePost
 );
 
+router.put(
+  postRoutes.EditPost(),
+  authController.requireLogin,
+  postController.EditPost
+)
+
 // router.delete(
 //   postRoutes.CommentDeletePost(),
 //   authController.requireLogin,

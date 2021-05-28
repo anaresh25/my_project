@@ -183,11 +183,9 @@ exports.deletePost = async (req, res, next) => {
   
   const { postId } = req.body;
   const { _id } = req.user;
-  console.log(_id,postId,"pressed_Delete_button")
+
   try {
     const checkIfPostExist = await Post.findOne({ _id: postId });
-    //console.log(Post.findOne({ _id: postId }))
-    //console.log(checkIfPostExist)
     if (checkIfPostExist.postedBy._id.toString() === _id.toString()) {
       const result = await checkIfPostExist.remove();
       //console.log(result,"result")
@@ -203,21 +201,6 @@ exports.deletePost = async (req, res, next) => {
   }
 };
 
-// exports.CommentDeletePost = async (req, res, next) => {
-
-//   console.log("hello comment")
-//   const { postId,user,val} = req.body;
-//   const { _id } = req.user;
-//   console.log("postId",postId,_id,user,val,"pressed_Delete_comment")
-//   try {
-//             //console.log("Post",Post.findOne({_id: val}))
-//             Post.findOne({ _id: val }).remove();
-//             return res.json({ message: "successfully delete" });
-//   } catch (err) {
-//     console.log(err,"err")
-//     return res.status(402).json({ error: err });
-//   }
-// };
 
 exports.CommentDeletePost = async (req, res, next) => {
   const { postId,user,val} = req.body;
@@ -243,35 +226,18 @@ exports.CommentDeletePost = async (req, res, next) => {
 
 
 exports.EditPost = async (req, res, next) => {
-  const { userId} = req.body;
+  const { postId,caption,image} = req.body;
  console.log("sdfdfsjk")
-  // if (!caption || !media) {
-  //   return res.status(402).json({ error: "Please add all details" });
-  // }
-   
-  // req.user.password = undefined;
-  edit = await findOne(userId)
-        console.log(edit,"lkjj")
-  let edit;
-  try
-  {
-          
-          // try {
-          //   const mediaRes = await cloudinary.uploader.upload(media);
-          //   const post = new Post({
-          //     caption,
-          //     media: mediaRes.url,
-          //     postedBy: req.user,
-          //   });
-          //   const newPost = await post.save();
-            return res.json({ message: "New post created" });
-          // } catch (err) {
-          //   console.log(err);
-          //   res.status(402).json({ error: err });
-          // }
-  }
-  catch(err)
-  {
-    res.status(402).json({ error: err });
+ const { _id } = req.user;
+
+  try {
+     const checkIfPostExist = await Post.findOne({ _id: postId });
+         console.log(checkIfPostExist)
+      return res.send(checkIfPostExist);
+    
+  } catch (err) {
+    console.log(err,"err")
+    return res.status(402).json({ error: err });
   }
 };
+
