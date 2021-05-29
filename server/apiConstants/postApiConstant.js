@@ -21,3 +21,5 @@ exports.putCommentPostRoute = () => "/commentPost";
 exports.postDeletePost=()=>`/deletePost`
 
 exports.CommentDeletePost=()=>`/deleteComment`
+
+exports.EditPost=()=>`/EditPost`

@@ -151,6 +151,7 @@ const Navigation = () => {
         <div className="toolbar_navigation-items">
           <ul>{renderList()}</ul>
         </div>
+       
       </nav>
       { searchuser && <Modal>
         <SearchModal close={close} />
