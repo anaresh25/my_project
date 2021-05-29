@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import Comment from "../Comment/Comment";
-
+import profileFunctions from "../../utils/profile";
+import {useHistory} from 'react-router-dom'
 import PostLikeAndComment from "../PostLikeAndComment/PostLikeAndComment";
 import "./PostModal.css";
 const PostModal = (props) => {
@@ -26,6 +27,7 @@ const PostModal = (props) => {
   } = props;
 console.log(profile_image)
   const myRef = useRef(null);
+  const history =useHistory()
   return (
     <div className="Modal">
       <div className="Modal_div">
@@ -42,9 +44,10 @@ console.log(profile_image)
               comment={caption}
               profile_image={profile_image}
               userId={userId}
+              postId={postId}
+              allComments={allComments}
             />
             {allComments.map((comment, index) => {
-                {console.log(comment)}
               if (comment) {
                 return (
                   <Comment
@@ -53,11 +56,15 @@ console.log(profile_image)
                     profile_image={comment.postedBy.profile_image}
                     comment={comment.comment}
                     userId={comment.postedBy._id}
+                    postId={postId}
+                    allComments={allComments}
                   />
                 );
               }
             })}
           </div>
+          <button onClick={()=>history.push({pathname:"/editpost",state:postId})}>"edit"</button>
+
           <PostLikeAndComment
             name={name}
             caption={caption}
@@ -75,6 +82,7 @@ console.log(profile_image)
             allComments={allComments}
             postedBy={postedBy}
           />
+          
         </div>
       </div>
     </div>

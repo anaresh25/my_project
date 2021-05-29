@@ -228,23 +228,21 @@ exports.CommentDeletePost = async (req, res, next) => {
 
 exports.EditPost = async (req, res, next) => {
   const { postId,caption,media} = req.body;
- console.log("sdfdfsjk",req.body)
+ console.log("fdfdfd")
+ console.log(postId,"dshkdfdhjf",caption)
   const { _id } = req.user;
-  console.log(_id,postId,req.body)
   try {
     const mediaRes = await cloudinary.uploader.upload(media);
-        Post.findOneAndUpdate({ _id: postId },{
+      Post.findOneAndUpdate({ _id: postId },{
        $set:{
            media:mediaRes.url,
            caption:caption,   
        }
-     }).then(result=>{
-       res.status(200).json({updated_Post:result})
-     }).catch((error)=>
-     {
-       res.status(400).json({post_not_deleted:error})
-     })
-    
+     }).then((data=>{
+      console.log(data)
+      return res.json({ message: "New post created", post: data });
+     }))
+ 
   } catch (err) {
     console.log(err,"err")
     return res.status(402).json({ error: err });

@@ -130,32 +130,7 @@ class profileFunctions {
     
   }
 
-// static async Deletelfun(postId,userId,history) {
-//   let res = await fetch(PostApiConstant.postDeletePost(), {
-//     method: "delete",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: AuthConfigForWeb(),
-//     },
-//     body: JSON.stringify({ postId: postId }),
-//   });
-//   history.push(`/profile/${userId}`)
-//   res = res.json();
-//   return res;
-// }
-// static async CommentDel(postId,commentId) {
-//   console.log(postId)
-//   let res = await fetch(PostApiConstant.CommentDeletePost(), {
-//     method: "delete",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: AuthConfigForWeb(),
-//     },
-//     body: JSON.stringify({ postId,commentId }),
-//   });
-//   res = res.json();
-//   return res;
-// }
+
 static async AllUSER() {
  
   let res = await fetch(userApiConstant.Alluser(), {
@@ -184,18 +159,30 @@ static async DeleteSelfRequest(userId) {
   return res;
 }
 
-static async EditPost(postId,caption,media) {
-  let res = await fetch(PostApiConstant.EditPost(), {
-    method: "put",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: AuthConfigForWeb(),
-    },
-    body: JSON.stringify({ postId: postId,caption:caption,media:media }),
-  });
-  res = res.json();
-  return res;
-}
+// static async EditPost(postId,caption,media,history,M) {
+//   let res = await fetch(PostApiConstant.EditPost(), {
+//     method: "put",
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: AuthConfigForWeb(),
+//     },
+//     body: JSON.stringify({ postId: postId,caption:caption,media:media }),
+//   }).then((res)=>
+//   {
+//         res = res.json();
+//          return res;
+//   }).catch((error)=>
+//   {
+//     if (error) {
+//       M.toast({ html: data.error, classes: "error_Toast" });
+//     } else {
+//       M.toast({ html: data.message, classes: "success_Toast" });
+//       history.push("/");
+//       history.push(DashboardRoutes.createProfileRoute(user._id));
+//     }
+//   })
+  
+// }
 }
 
 

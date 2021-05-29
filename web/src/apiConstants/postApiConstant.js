@@ -18,6 +18,7 @@ export const postDeletePost=()=>`/deletePost`;
 
 export const CommentDeletePost=()=>`/deleteComment`;
 
-export const selfDeletPost=()=>`/deleteComment`;
+export const selfDeletPost=()=>`/deletePost`;
 
-export const EditPost =()=>'\EditPost';
+
+export const EditPost=()=>`/EditPost`

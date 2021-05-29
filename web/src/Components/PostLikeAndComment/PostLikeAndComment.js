@@ -58,7 +58,7 @@ const PostLikeAndComment = (props) => {
     createComment(commentText, postId);
     setCommentText(' ')
   };
-
+console.log(postId)
 
 const a = localStorage.getItem('user')
  const use= JSON.parse(a)._id
