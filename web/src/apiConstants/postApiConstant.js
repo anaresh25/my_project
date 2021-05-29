@@ -13,9 +13,11 @@ export const putUnLikePostRoute = () => "/unLikePost";
 
 export const putCommentPostRoute = () => "/commentPost";
 
-export const postDeletePost=()=>`/deletePost`
+export const postDeletePost=()=>`/deletePost`;
 
 
-export const CommentDeletePost=()=>`/deleteComment`
+export const CommentDeletePost=()=>`/deleteComment`;
 
-export const selfDeletPost=()=>`/deleteComment`
+export const selfDeletPost=()=>`/deleteComment`;
+
+export const EditPost =()=>'\EditPost';

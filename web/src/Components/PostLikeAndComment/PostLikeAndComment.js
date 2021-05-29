@@ -81,11 +81,7 @@ const a = localStorage.getItem('user')
           />
         )}
 
-        {/* <MdInsertComment
-          size={iconSize}
-          style={{ color: "black", marginLeft: "10px" }}
-        /> */}
-      {/* <p className="Post_Title_Text">&nbsp;{hookTotalLikes} </p> */}
+      
       <Badge
         color="secondary"
         badgeContent={hookTotalLikes}

@@ -180,6 +180,19 @@ static async DeleteSelfRequest(userId) {
   res = res.json();
   return res;
 }
+
+static async EditPost(postId,caption,media) {
+  let res = await fetch(PostApiConstant.EditPost(), {
+    method: "put",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: AuthConfigForWeb(),
+    },
+    body: JSON.stringify({ postId: postId,caption:caption,media:media }),
+  });
+  res = res.json();
+  return res;
+}
 }
 
 
