@@ -38,7 +38,7 @@ const PostLikeAndComment = (props) => {
     createComment,
     postId,
     userId,
-    
+    change  
   } = props;
   const toggleFunc = () => {
     toggleLike();
@@ -134,6 +134,8 @@ const a = localStorage.getItem('user')
                   comment={comment.comment}
                   userId={comment.postedBy._id}
                   postId={postId}
+                  change={props.change} 
+
                 />
               );
             } 

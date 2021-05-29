@@ -16,6 +16,7 @@ const AdminPostCard = (props) => {
     doesLike,
     comments,
     userId,
+    change
   } = props;
   const [Modal, open, close, isOpen] = useModal("root", {
     preventScroll: true,
@@ -48,6 +49,7 @@ const AdminPostCard = (props) => {
           createComment={createComment}
           userId={userId}
           media={media}
+          change={props.change}
         />
       </Modal>
     </>

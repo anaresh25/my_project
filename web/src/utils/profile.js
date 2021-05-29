@@ -124,7 +124,6 @@ class profileFunctions {
         M.toast({ html:"comment deleted", classes: "success_Toast" });
 
       }
-    // window.location.reload();
 
     return data;
     

@@ -22,7 +22,8 @@ const PostModal = (props) => {
     allComments,
     createComment,
     userId,
-    postedBy
+    postedBy,
+    change
    
   } = props;
 console.log(profile_image)
@@ -39,6 +40,7 @@ console.log(profile_image)
         </div>
         <div className="Modal_comment_wrapper">
           <div className="Modal_comment_container" ref={myRef}>
+            {console.log(allComments)}
             <Comment
               name={name}
               comment={caption}
@@ -46,8 +48,10 @@ console.log(profile_image)
               userId={userId}
               postId={postId}
               allComments={allComments}
+              change={props.change}
             />
             {allComments.map((comment, index) => {
+               {console.log(comment)}
               if (comment) {
                 return (
                   <Comment
@@ -58,12 +62,13 @@ console.log(profile_image)
                     userId={comment.postedBy._id}
                     postId={postId}
                     allComments={allComments}
+                    change={props.change}
                   />
                 );
               }
             })}
           </div>
-          <button onClick={()=>history.push({pathname:"/editpost",state:postId})}>"edit"</button>
+          <button onClick={()=>history.push({pathname:"/editpost",state:postId,userId:userId})}>"edit"</button>
 
           <PostLikeAndComment
             name={name}
@@ -81,6 +86,7 @@ console.log(profile_image)
             createComment={createComment}
             allComments={allComments}
             postedBy={postedBy}
+            change={props.change}
           />
           
         </div>

@@ -29,6 +29,12 @@ const Profile = () => {
     preventScroll: true,
   });
 
+  const [count,setcount]=useState(0)
+   const change=(one)=>
+   {
+     console.log(one)
+     setcount(count+1);
+   }
   useEffect(async () => {
     setIsLoading(true);
     let res = await profileFunctions.fetchProfile(userId);
@@ -37,7 +43,7 @@ const Profile = () => {
       M.toast({ html: res.error, classes: "error_Toast" });
       return;
     }
-    console.log(res);
+    console.log(res,"now");
     setUser(res.user);
     setData([...res.userPosts]);
     setFollow(res.doesAdminFollow);
@@ -49,7 +55,7 @@ const Profile = () => {
     setTotalFollowers(res.totalFollowers);
     setTotalFollowing(res.totalFollowing);
     setActionType(setButtonText(res.adminRequestedUser, res.doesAdminFollow));
-  }, [userId]);
+  }, [userId,count]);
 
   const DELETE_REQUEST_TYPE_CONSTANT = "Delete request";
   const UNFOLLOW_TYPE_CONSTANT = "unfollow";
@@ -193,6 +199,7 @@ const Profile = () => {
       <div className="gallery">
         {follow || isAdmin ? (
           data.map((post, index) => {
+            console.log(post.comments,"now")
             return (
               <AdminPostCard
                 key={post._id}
@@ -205,6 +212,7 @@ const Profile = () => {
                 doesLike={post.liked}
                 comments={post.comments}
                 userId={post.postedBy._id}
+                change={change}
               />
             );
           })

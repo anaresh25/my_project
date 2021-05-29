@@ -1,4 +1,4 @@
-import React, { useState, useRef,useContext } from "react";
+import React, { useState, useRef,useContext,useEffect } from "react";
 import * as postApiConstant from "../../apiConstants/postApiConstant";
 import M from "materialize-css";
 import "./CreatePost.css";
@@ -6,7 +6,7 @@ import * as DashboardRoutes from "../../Routes/DashboardRoutes";
 import { AuthConfigForWeb } from "../../apiConstants/jwtConstant";
 import { useHistory } from "react-router";
 import { UserContext } from "../../App";
-
+import profileFunctions from "../../utils/profile";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
@@ -23,7 +23,32 @@ const CreatePost = (props) => {
   const { state, dispatch } = useContext(UserContext);
   const { user } = state;
   const postId = props.location.state
+  const userId =props.location.userId
   console.log(props)
+  const [data,setdata]=useState('')
+  const func =async()=>
+    {
+        let res = await profileFunctions.fetchProfile(userId);
+
+        if (res.error) {
+        M.toast({ html: res.error, classes: "error_Toast" });
+        return;
+        }else
+        {      const data=res.userPosts;
+          const set  = data.filter(casino => casino._id === postId)
+           console.log(set,"dfdsfjk")
+            setdata(set)
+            setCaption("Sdfdf")
+            console.log(set[0].caption)
+            setImagePreview(set[0].media)
+            console.log(data)
+        }
+    }
+    useEffect(()=>
+    {
+       func()
+    },[])
+    
   const PostData = async () => {
     if (!image && !imagePreview) {
       M.toast({ html: "Please fill every input", classes: "error_Toast" });
@@ -66,7 +91,9 @@ const CreatePost = (props) => {
       };
     }
   };
+  
   return (
+
     <div className="Create_Post_Page_Container">
       <div className="Create_Post_Card">
         <span className="echo">Create post</span>
@@ -115,7 +142,7 @@ const CreatePost = (props) => {
         )}
       </div>
     </div>
-  );
-};
+  ) 
+}
 
 export default CreatePost;
