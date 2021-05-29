@@ -138,6 +138,7 @@ const a = localStorage.getItem('user')
                   comment={comment.comment}
                   userId={comment.postedBy._id}
                   postId={postId}
+                  caption={caption}
                 />
               );
             } 

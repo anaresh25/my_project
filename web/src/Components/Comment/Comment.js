@@ -8,7 +8,7 @@ import profileFunctions from "../../utils/profile";
 
 
 const Comment = (props) => {
-  const { val ,name, comment, profile_image, userId ,postId} = props;
+  const { val ,name, comment, profile_image, userId ,postId,caption} = props;
 
 
   const a = localStorage.getItem('user')
@@ -30,7 +30,7 @@ const Comment = (props) => {
           <span className="Modal_postedBy_Text">{name} </span>
         </Link>
         <span className="Modal_Comment_Text">{comment}</span>
-        {use==userId?<ClearIcon onClick= { ()=>profileFunctions.CommentDel(postId,userId,val) }   style={{marginLeft:"auto"}} color="disabled"  />:null }
+        {(use==userId && comment!=caption) ?<ClearIcon onClick= { ()=>profileFunctions.CommentDel(postId,userId,val) }   style={{marginLeft:"auto"}} color="disabled"  />:null }
         
     </div>
     </div>

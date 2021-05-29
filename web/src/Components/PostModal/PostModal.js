@@ -42,6 +42,9 @@ console.log(profile_image)
               comment={caption}
               profile_image={profile_image}
               userId={userId}
+              postId={postId}
+              caption={caption}
+
             />
             {allComments.map((comment, index) => {
                 {console.log(comment)}
@@ -53,6 +56,8 @@ console.log(profile_image)
                     profile_image={comment.postedBy.profile_image}
                     comment={comment.comment}
                     userId={comment.postedBy._id}
+                    postId={postId}
+                    caption={caption}
                   />
                 );
               }
