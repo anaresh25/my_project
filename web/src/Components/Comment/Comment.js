@@ -3,7 +3,7 @@ import "./Comment.css";
 import * as DashboardRoutes from "../../Routes/DashboardRoutes";
 import { Link } from "react-router-dom";
 
-// import ClearIcon from '@material-ui/icons/Clear';
+import ClearIcon from '@material-ui/icons/Clear';
 import profileFunctions from "../../utils/profile";
 
 
@@ -30,7 +30,7 @@ const Comment = (props) => {
           <span className="Modal_postedBy_Text">{name} </span>
         </Link>
         <span className="Modal_Comment_Text">{comment}</span>
-        {use==userId?<button onClick= { ()=>profileFunctions.CommentDel(postId,userId,val) }   style={{marginLeft:"auto"}} color="disabled"  />:null }
+        {use==userId?<ClearIcon onClick= { ()=>profileFunctions.CommentDel(postId,userId,val) }   style={{marginLeft:"auto"}} color="disabled"  />:null }
         
     </div>
     </div>

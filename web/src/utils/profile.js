@@ -1,7 +1,7 @@
 import * as userApiConstant from "../apiConstants/userApiConstant";
 import * as PostApiConstant from "../apiConstants/postApiConstant";
 import { AuthConfigForWeb } from "../apiConstants/jwtConstant";
-// import * as DashboardRoutes from "../Routes/DashboardRoutes";
+import * as DashboardRoutes from "../Routes/DashboardRoutes";
 import M from "materialize-css";
 
 
@@ -99,9 +99,10 @@ class profileFunctions {
       body: JSON.stringify({ postId: postId }),
     });
     //history.push(`/profile/${userId}`)
+    DashboardRoutes.profileRoute()
+    window.location.reload();
     res = res.json();
     return res;
-    //DashboardRoutes.profileRoute()
   }
 
   static async CommentDel(postId,user,val) {
@@ -123,23 +124,25 @@ class profileFunctions {
         M.toast({ html:"comment deleted", classes: "success_Toast" });
 
       }
+    // window.location.reload();
+
     return data;
     
   }
 
-static async Deletelfun(postId,userId,history) {
-  let res = await fetch(PostApiConstant.postDeletePost(), {
-    method: "delete",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: AuthConfigForWeb(),
-    },
-    body: JSON.stringify({ postId: postId }),
-  });
-  history.push(`/profile/${userId}`)
-  res = res.json();
-  return res;
-}
+// static async Deletelfun(postId,userId,history) {
+//   let res = await fetch(PostApiConstant.postDeletePost(), {
+//     method: "delete",
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: AuthConfigForWeb(),
+//     },
+//     body: JSON.stringify({ postId: postId }),
+//   });
+//   history.push(`/profile/${userId}`)
+//   res = res.json();
+//   return res;
+// }
 // static async CommentDel(postId,commentId) {
 //   console.log(postId)
 //   let res = await fetch(PostApiConstant.CommentDeletePost(), {

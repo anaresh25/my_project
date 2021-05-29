@@ -17,6 +17,9 @@ import SearchModal from "../Components/SearchModal/SearchModal";
 import "./navigation.css";
 import AllUser from '../Components/SearchModal/Alluser'
 
+import useStyles from './styles';
+import Logo from"../images/memoriesLogo.png";
+import Text from"../images/logo/color_1.jpg";
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import NotificationsOffIcon from '@material-ui/icons/NotificationsOff';
 import Badge from '@material-ui/core/Badge';
@@ -38,6 +41,7 @@ import { Button } from "@material-ui/core";
 const Navigation = () => {
   const { state, dispatch } = useContext(UserContext);
   const [users,setusers] =useState(false)
+  const classes = useStyles();
   const [searchuser,setsearchuser] =useState(false)
   const { user } = state;
   const [Modal, open, close, isOpen] = useModal("root", {
@@ -133,11 +137,15 @@ const Navigation = () => {
     <header className="toolbar">
       <nav className="toolbar__navigation">
         <div className="toolbar__logo">
-          <Link
+          {/* <Link
             to={user ? "/" : authRoutes.logInRoute()}
             className="nav-logoLink"
           >
             ECHO
+          </Link> */}
+          <Link to={user ? "/" : authRoutes.logInRoute()} className={classes.brandContainer}>
+          <img component={Link} to="/" src={Text} alt="icon" height="45px" />
+          <img className={classes.image} src={Logo} alt="icon" height="40px" />
           </Link>
         </div>
         <div className="toolbar_navigation-items">
