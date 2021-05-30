@@ -205,6 +205,7 @@ exports.deletePost = async (req, res, next) => {
 exports.CommentDeletePost = async (req, res, next) => {
   const { postId,user,val} = req.body;
   const { _id } = req.user;
+  console.log(req.body)
   Post.findByIdAndUpdate( postId,{
     $pull : { comments : {_id: val }}
   },{
@@ -226,15 +227,22 @@ exports.CommentDeletePost = async (req, res, next) => {
 
 
 exports.EditPost = async (req, res, next) => {
-  const { postId,caption,image} = req.body;
- console.log("sdfdfsjk")
- const { _id } = req.user;
-
+  const { postId,caption,media} = req.body;
+ console.log("fdfdfd")
+ console.log(postId,"dshkdfdhjf",caption)
+  const { _id } = req.user;
   try {
-     const checkIfPostExist = await Post.findOne({ _id: postId });
-         console.log(checkIfPostExist)
-      return res.send(checkIfPostExist);
-    
+    const mediaRes = await cloudinary.uploader.upload(media);
+      Post.findOneAndUpdate({ _id: postId },{
+       $set:{
+           media:mediaRes.url,
+           caption:caption,   
+       }
+     }).then((data=>{
+      console.log(data)
+      return res.json({ message: "New post created", post: data });
+     }))
+ 
   } catch (err) {
     console.log(err,"err")
     return res.status(402).json({ error: err });

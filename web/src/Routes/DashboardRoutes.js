@@ -13,3 +13,4 @@ export const myfollowingpostRoute = () => "/myfollowingpost";
 export const followersRoute = () => "/followRequest";
 
 export const  postDeletePostRoute= (postId) =>"/deletePost";
+export const EditPost =()=>"/editpost"

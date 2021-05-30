@@ -38,7 +38,7 @@ const PostLikeAndComment = (props) => {
     createComment,
     postId,
     userId,
-    
+    change  
   } = props;
   const toggleFunc = () => {
     toggleLike();
@@ -58,7 +58,7 @@ const PostLikeAndComment = (props) => {
     createComment(commentText, postId);
     setCommentText(' ')
   };
-
+console.log(postId)
 
 const a = localStorage.getItem('user')
  const use= JSON.parse(a)._id
@@ -81,11 +81,7 @@ const a = localStorage.getItem('user')
           />
         )}
 
-        {/* <MdInsertComment
-          size={iconSize}
-          style={{ color: "black", marginLeft: "10px" }}
-        /> */}
-      {/* <p className="Post_Title_Text">&nbsp;{hookTotalLikes} </p> */}
+      
       <Badge
         color="secondary"
         badgeContent={hookTotalLikes}
@@ -138,7 +134,12 @@ const a = localStorage.getItem('user')
                   comment={comment.comment}
                   userId={comment.postedBy._id}
                   postId={postId}
+<<<<<<< HEAD
                   caption={caption}
+=======
+                  change={props.change} 
+
+>>>>>>> eb6d392c5339fd7bc3dc1a97c95fdf1cf9042572
                 />
               );
             } 

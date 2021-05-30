@@ -11,6 +11,8 @@ import FollowerRequest from "./pages/FollowerRequest/FollowerRequest";
 import ProfileFollowData from "./pages/ProfileFollowData/ProfileFollowData";
 import * as authRoutes from "./Routes/AuthRoutes";
 import * as DashboardRoutes from "./Routes/DashboardRoutes";
+import EditPost from "./pages/CreatePost/EditPost";
+
 
 import { userReducer, initialState } from "./Store/reducers/userReducer";
 
@@ -53,6 +55,7 @@ const Routing = () => {
         path={DashboardRoutes.profileFollowingDataRoute()}
         component={ProfileFollowData}
       />
+      <Route path ={DashboardRoutes.EditPost} component={EditPost}/>
       {/* <Route
        path={DashboardRoutes.postDeletePostRoute()}
        component={Profile}

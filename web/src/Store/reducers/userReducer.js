@@ -1,5 +1,6 @@
 export const initialState = {
   user: false,
+  comment_delete:false
 };
 export const userReducer = (state = initialState, action) => {
   if (action.type == "USER") {
@@ -20,6 +21,11 @@ export const userReducer = (state = initialState, action) => {
     let newUser = { ...state.user, requestedBy: newRequestedBy };
 
     localStorage.setItem("user", JSON.stringify(newUser));
+
+    if(action.type==="DETELE_COMMENT")
+    {
+          return {comment_delete:action.comment}
+    }
 
     return {
       ...state,
