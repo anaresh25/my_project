@@ -42,3 +42,10 @@
   /* padding: 0.5rem; */
   /* overflow-y: hidden; */
 }
+
+.overlay2 {
+  position: 'absolute';
+  top : '20px';
+  right: '20px';
+  color: 'white';
+}

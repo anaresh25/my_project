@@ -3,7 +3,7 @@ import * as PostApiConstant from "../apiConstants/postApiConstant";
 import { AuthConfigForWeb } from "../apiConstants/jwtConstant";
 import * as DashboardRoutes from "../Routes/DashboardRoutes";
 import M from "materialize-css";
-
+//import cogoToast from 'cogo-toast';
 
 class profileFunctions {
   constructor() {}
@@ -124,6 +124,11 @@ class profileFunctions {
         M.toast({ html:"comment deleted", classes: "success_Toast" });
 
       }
+      // cogoToast.(`You have reached the bottom 😱!`, {
+      //   position: 'bottom-right'
+      // });
+      // cogoToast
+
     // window.location.reload();
 
     return data;

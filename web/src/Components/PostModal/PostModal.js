@@ -1,8 +1,10 @@
 import React, { useRef } from "react";
 import Comment from "../Comment/Comment";
 
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import PostLikeAndComment from "../PostLikeAndComment/PostLikeAndComment";
 import "./PostModal.css";
+import EditIcon from '@material-ui/icons/Edit';
 const PostModal = (props) => {
   const {
     close,
@@ -35,6 +37,7 @@ console.log(profile_image)
             className="Modal_img"
           />
         </div>
+        <div className="overlay2" ><MoreHorizIcon fontSize="default" color="primary" /> </div>
         <div className="Modal_comment_wrapper">
           <div className="Modal_comment_container" ref={myRef}>
             <Comment
