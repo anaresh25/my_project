@@ -135,7 +135,7 @@ const a = localStorage.getItem('user')
                   userId={comment.postedBy._id}
                   postId={postId}
                   change={props.change} 
-
+                  caption={caption}
                 />
               );
             } 

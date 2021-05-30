@@ -7,6 +7,11 @@ import AdminPostCard from "../../Components/AdminPostCard/AdminPostCard";
 import { UserContext } from "../../App";
 import M from "materialize-css";
 import * as DashboardRoutes from "../../Routes/DashboardRoutes";
+
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import DeleteIcon from '@material-ui/icons/Delete';
+
 const Profile = () => {
   const { state, dispatch } = useContext(UserContext);
   const [data, setData] = useState([]);
@@ -147,18 +152,21 @@ const Profile = () => {
             {user.name} wants to follow you
           </span>
           <div className="Profile_Button_Request_Container">
-            <button
-              className="follow_button"
-              onClick={actionHandler.bind(this, ACCEPT_FOLLOW_TYPE_CONSTANT)}
-            >
-              Accept
-            </button>
-            <button
-              className="unFollow_button"
-              onClick={actionHandler.bind(this, DELETE_REQUEST_TYPE_CONSTANT)}
-            >
-              Delete
-            </button>
+          <Button color="primary" variant="contained" 
+          //  className="follow_button"
+            onClick={actionHandler.bind(this, ACCEPT_FOLLOW_TYPE_CONSTANT)}  >
+                Accept
+          </Button>
+        
+          <Button
+            variant="contained"
+            color="secondary"
+            startIcon={<DeleteIcon style={{color:"white"}} />}
+            // className="unFollow_button"
+            onClick={actionHandler.bind(this, DELETE_REQUEST_TYPE_CONSTANT)}
+          >
+            Delete
+          </Button>
           </div>
         </div>
       ) : null}
@@ -175,10 +183,14 @@ const Profile = () => {
             <h1 className="title_text">{!loading ? user.name : "loading"}</h1>
             {!isAdmin && (
               <button
+                color="primary"
+                variant="contained"
+                style={{cursor:"pointer"}}
                 className="follow_button"
                 onClick={actionHandler.bind(this, actionType)}
               >
                 {actionType}
+    
               </button>
             )}
           </div>

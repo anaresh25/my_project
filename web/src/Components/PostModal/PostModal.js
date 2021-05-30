@@ -28,6 +28,9 @@ const PostModal = (props) => {
     change
    
   } = props;
+
+  const a = localStorage.getItem('user')
+ const use= JSON.parse(a)._id
 console.log(profile_image)
   const myRef = useRef(null);
   const history =useHistory()
@@ -40,7 +43,7 @@ console.log(profile_image)
             className="Modal_img"
           />
         </div>
-        <div className="overlay2" ><MoreHorizIcon fontSize="default" color="primary" /> </div>
+        {userId==use ?<div className="overlay2" ><MoreHorizIcon fontSize="default" color="primary"  onClick={()=>history.push({pathname:"/editpost",state:postId,userId:userId})} /> </div>:null}
         <div className="Modal_comment_wrapper">
           <div className="Modal_comment_container" ref={myRef}>
             {console.log(allComments)}
@@ -52,6 +55,7 @@ console.log(profile_image)
               postId={postId}
               allComments={allComments}
               change={props.change}
+              caption={caption}
             />
             {allComments.map((comment, index) => {
                {console.log(comment)}
@@ -72,7 +76,7 @@ console.log(profile_image)
               }
             })}
           </div>
-          <button onClick={()=>history.push({pathname:"/editpost",state:postId,userId:userId})}>"edit"</button>
+          {/* <button onClick={()=>history.push({pathname:"/editpost",state:postId,userId:userId})}>"edit"</button> */}
 
           <PostLikeAndComment
             name={name}

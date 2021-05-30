@@ -96,7 +96,7 @@ const CreatePost = (props) => {
 
     <div className="Create_Post_Page_Container">
       <div className="Create_Post_Card">
-        <span className="echo">Create post</span>
+        <span className="echo">Edit post</span>
         <div
           className="Upload_Image_Container"
           onClick={() => {
@@ -135,7 +135,7 @@ const CreatePost = (props) => {
           //   Create 
           // </button>
           <Button variant="contained" color="default" onClick={PostData} style={{marginTop:"5px"}} startIcon={<CloudUploadIcon />}>
-          Upload
+          UpDate
         </Button>
         ) : (
           <div className="Post_Title_Comment_Text">Uploading</div>

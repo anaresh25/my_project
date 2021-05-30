@@ -9,7 +9,7 @@ import { MdDragHandle } from "react-icons/md";
 
 
 const Comment = (props) => {
-  const { val ,name, comment, profile_image, userId ,postId,allComments,change} = props;
+  const { val ,name, comment, profile_image, userId ,postId,allComments,change,caption} = props;
      
 console.log(postId)
   const a = localStorage.getItem('user')
@@ -37,7 +37,8 @@ console.log(postId)
         </Link>
         <span className="Modal_Comment_Text">{comment}</span>
         {/* {(use==userId && comment!=caption) ?<ClearIcon onClick= { ()=>profileFunctions.CommentDel(postId,userId,val) }   style={{marginLeft:"auto"}} color="disabled"  />:null } */}
-        {use===userId||userId===undefined?<ClearIcon onClick={ ()=>{profileFunctions.CommentDel(postId,userId,val);handle();} }   style={{marginLeft:"auto"}} color="disabled"  />:null }
+        {console.log(caption)}
+        {use===userId && comment!=caption ?<ClearIcon onClick={ ()=>{profileFunctions.CommentDel(postId,userId,val);handle();} }   style={{marginLeft:"auto"}} color="disabled"  />:null }
         
     </div>
     </div>
