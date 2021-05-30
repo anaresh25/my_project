@@ -124,15 +124,12 @@ class profileFunctions {
         M.toast({ html:"comment deleted", classes: "success_Toast" });
 
       }
-<<<<<<< HEAD
-      // cogoToast.(`You have reached the bottom 😱!`, {
+    // cogoToast.(`You have reached the bottom 😱!`, {
       //   position: 'bottom-right'
       // });
       // cogoToast
 
     // window.location.reload();
-=======
->>>>>>> eb6d392c5339fd7bc3dc1a97c95fdf1cf9042572
 
     return data;
     

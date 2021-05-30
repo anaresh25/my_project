@@ -1,15 +1,11 @@
 import React, { useRef } from "react";
 import Comment from "../Comment/Comment";
-<<<<<<< HEAD
-
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-=======
 import profileFunctions from "../../utils/profile";
 import {useHistory} from 'react-router-dom'
->>>>>>> eb6d392c5339fd7bc3dc1a97c95fdf1cf9042572
 import PostLikeAndComment from "../PostLikeAndComment/PostLikeAndComment";
 import "./PostModal.css";
-import EditIcon from '@material-ui/icons/Edit';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+
 const PostModal = (props) => {
   const {
     close,
@@ -54,13 +50,8 @@ console.log(profile_image)
               profile_image={profile_image}
               userId={userId}
               postId={postId}
-<<<<<<< HEAD
-              caption={caption}
-
-=======
               allComments={allComments}
               change={props.change}
->>>>>>> eb6d392c5339fd7bc3dc1a97c95fdf1cf9042572
             />
             {allComments.map((comment, index) => {
                {console.log(comment)}
@@ -73,12 +64,9 @@ console.log(profile_image)
                     comment={comment.comment}
                     userId={comment.postedBy._id}
                     postId={postId}
-<<<<<<< HEAD
                     caption={caption}
-=======
                     allComments={allComments}
                     change={props.change}
->>>>>>> eb6d392c5339fd7bc3dc1a97c95fdf1cf9042572
                   />
                 );
               }
