@@ -73,9 +73,9 @@ const SignUp = () => {
       <div className="container">
         <div className="signup_card">
           <p className="sign" align="center">Sign Up</p>
-          <p className="forgot">
+          {/* <p className="forgot">
             Sign up to see photos and videos from your friends.
-          </p>
+          </p> */}
           <div
             className="Sign_up_avatar"
             onClick={() => {

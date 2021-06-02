@@ -48,7 +48,8 @@ const PostLikeAndComment = (props) => {
 
 
   const history = useHistory();
-
+  const a = localStorage.getItem('user')
+  const use= JSON.parse(a)._id
 
   const createCommentFunc = () => {
     if (commentText === "" || !commentText) {
@@ -58,10 +59,9 @@ const PostLikeAndComment = (props) => {
     createComment(commentText, postId);
     setCommentText(' ')
   };
-console.log(postId)
+console.log(postId,"UserID",userId)
 
-const a = localStorage.getItem('user')
- const use= JSON.parse(a)._id
+ 
  //console.log(use,userId)
   return (
     <div className="Post_Detail_Container">
@@ -150,12 +150,11 @@ const a = localStorage.getItem('user')
       >
       
         
-        <TextField id="standard-basic" label="Comment" value={commentText}  className="inputComment"
+        <TextField  label="Comment" value={commentText}  className="inputComment"
         onKeyUp={(e) => {
           if (e.key === " ") {
             setCommentText((prev) => prev + " ");
           }
-          
         }}
         onChange={(e) => setCommentText(e.target.value)}
         size="small"

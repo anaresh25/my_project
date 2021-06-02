@@ -43,7 +43,7 @@ console.log(profile_image)
             className="Modal_img"
           />
         </div>
-        {userId==use ?<div className="overlay2" ><MoreHorizIcon fontSize="default" color="primary"  onClick={()=>history.push({pathname:"/editpost",state:postId,userId:userId})} /> </div>:null}
+        {userId===use ?<div className="overlay2" ><MoreHorizIcon fontSize="default" color="primary"  onClick={()=>history.push({pathname:"/editpost",state:postId,userId:userId})} /> </div>:null}
         <div className="Modal_comment_wrapper">
           <div className="Modal_comment_container" ref={myRef}>
             {console.log(allComments)}

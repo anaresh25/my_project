@@ -26,7 +26,6 @@ const CommentPostHook = (comments) => {
       res = await res.json();
     } catch (err) {}
   };
-
   return { allComments, createComment };
 };
 

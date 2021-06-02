@@ -124,17 +124,16 @@ class profileFunctions {
         M.toast({ html:"comment deleted", classes: "success_Toast" });
 
       }
-    // cogoToast.(`You have reached the bottom 😱!`, {
+      // cogoToast.(`You have reached the bottom 😱!`, {
       //   position: 'bottom-right'
       // });
       // cogoToast
 
     // window.location.reload();
-
     return data;
     
   }
-
+  
 
 static async AllUSER() {
  
