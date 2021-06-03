@@ -88,7 +88,7 @@ class profileFunctions {
   }
 
 
-  static async Deletelfun(postId,userId) {
+  static async Deletelfun(postId) {
 
     let res = await fetch(PostApiConstant.postDeletePost(), {
       method: "delete",

@@ -100,7 +100,7 @@ console.log(postId,"UserID",userId)
 
       {(use===userId)?
       
-      <DeleteIcon style={{marginLeft:"auto"}} type="submit" onClick= { ()=>profileFunctions.Deletelfun(postId,userId)  } />
+      <DeleteIcon style={{marginLeft:"auto"}} type="submit" onClick= { ()=>profileFunctions.Deletelfun(postId)  } />
       
       : null}
       </div>
