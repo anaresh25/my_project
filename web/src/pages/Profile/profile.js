@@ -211,9 +211,10 @@ const Profile = () => {
       <div className="gallery">
         {follow || isAdmin ? (
           data.map((post, index) => {
+           
             console.log(post.comments,"now")
             return (
-              <AdminPostCard
+              <AdminPostCard className="pics"
                 key={post._id}
                 media={post.media}
                 name={post.postedBy.name}

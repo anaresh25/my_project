@@ -38,6 +38,7 @@ const PostLikeAndComment = (props) => {
     createComment,
     postId,
     userId,
+    close,
     change  
   } = props;
   const toggleFunc = () => {
@@ -117,7 +118,7 @@ console.log(postId,"UserID",userId)
           </div>
           <div className="Post_comment_text">
             {/* {console.log(allComments)} */}
-            <span onClick={open}>
+            <span onClick={open} style={{cursor:"pointer"}}>
               {allComments.length > 0
                 ? `View all ${allComments.length} comments`
                 : "Be the first one to comment"}

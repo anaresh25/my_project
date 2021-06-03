@@ -5,6 +5,7 @@ import {useHistory} from 'react-router-dom'
 import PostLikeAndComment from "../PostLikeAndComment/PostLikeAndComment";
 import "./PostModal.css";
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import CloseIcon from "@material-ui/icons/Close";
 
 const PostModal = (props) => {
   const {
@@ -36,6 +37,7 @@ console.log(profile_image)
   const history =useHistory()
   return (
     <div className="Modal">
+        {open?<CloseIcon className="sv" onClick={close}  />:null}
       <div className="Modal_div">
         <div className="Modal_img_container">
           <img

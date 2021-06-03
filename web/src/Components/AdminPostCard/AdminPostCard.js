@@ -4,7 +4,6 @@ import CommentPostHook from "../../customHooks/commentPostHook";
 import PostModal from "../PostModal/PostModal";
 import useModal from "react-hooks-use-modal";
 import "./AdminPostCard.css";
-
 const AdminPostCard = (props) => {
   const {
     name,
@@ -31,7 +30,7 @@ const AdminPostCard = (props) => {
 
   return (
     <>
-      <img key={userId} className="item" src={media} onClick={open}/>;
+      <img key={userId} style={{height:"100%",width:"100%" }} className="item" src={media} onClick={open}/>
       <Modal>
         <PostModal
           name={name}
@@ -50,8 +49,10 @@ const AdminPostCard = (props) => {
           userId={userId}
           media={media}
           change={props.change}
+          close={close}
         />
       </Modal>
+
     </>
   );
 };

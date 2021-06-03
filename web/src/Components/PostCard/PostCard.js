@@ -65,6 +65,7 @@ const PostCard = (props) => {
             createComment={createComment}
             userId={userId}
             postedBy={postedBy}
+            close={close}
 
           />
         </div>
@@ -86,6 +87,7 @@ const PostCard = (props) => {
           createComment={createComment}
           userId={userId}
           media={media}
+          close={close}
         />
       </Modal>
     </>
