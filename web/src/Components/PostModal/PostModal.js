@@ -26,7 +26,8 @@ const PostModal = (props) => {
     createComment,
     userId,
     postedBy,
-    change
+    change,
+    commentId
    
   } = props;
 
@@ -64,7 +65,7 @@ console.log(profile_image)
               if (comment) {
                 return (
                   <Comment
-                    val={comment._id}
+                    commentId={comment._id}
                     name={comment.postedBy.name}
                     profile_image={comment.postedBy.profile_image}
                     comment={comment.comment}

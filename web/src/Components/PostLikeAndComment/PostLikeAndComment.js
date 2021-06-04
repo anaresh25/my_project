@@ -39,6 +39,7 @@ const PostLikeAndComment = (props) => {
     postId,
     userId,
     close,
+    commentId,
     change  
   } = props;
   const toggleFunc = () => {
@@ -59,9 +60,9 @@ const PostLikeAndComment = (props) => {
     }
     createComment(commentText, postId);
     setCommentText(' ')
-  };
-console.log(postId,"UserID",userId)
 
+  };
+console.log("postId",postId,"UserID",userId)
  
  //console.log(use,userId)
   return (
@@ -128,16 +129,19 @@ console.log(postId,"UserID",userId)
             
              {
               return (
+                <>
                 <Comment
                   // key={comment._id}
-                  val={comment._id}
                   name={comment.postedBy.name}
                   comment={comment.comment}
                   userId={comment.postedBy._id}
                   postId={postId}
                   change={props.change} 
                   caption={caption}
+                  commentId={comment._id}
                 />
+                {/* <p>{comment._id}</p> */}
+                </>
               );
             } 
           })}

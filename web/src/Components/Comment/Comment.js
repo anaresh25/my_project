@@ -9,10 +9,10 @@ import { MdDragHandle } from "react-icons/md";
 
 
 const Comment = (props) => {
-  const { val ,name, comment, profile_image, userId ,postId,allComments,change,caption} = props;
+  const { commentId ,name, comment, profile_image, userId ,postId,allComments,change,caption} = props;
      
 console.log(postId)
-console.log("userID",userId,"val",val)
+console.log("userID",userId,"val",commentId)
   const a = localStorage.getItem('user')
  const use= JSON.parse(a)._id
   
@@ -40,7 +40,7 @@ console.log("userID",userId,"val",val)
         <span className="Modal_Comment_Text">{comment}</span>
         {/* {(use==userId ||userId===undefined)&& comment!=caption ?<ClearIcon onClick= { ()=>profileFunctions.CommentDel(postId,userId,val);handle(); }   style={{marginLeft:"auto"}} color="disabled"  />:null } */}
         {/* {console.log(caption)} */}
-        {(use===userId ||userId===undefined) && comment!=caption ?<ClearIcon onClick={ ()=>{profileFunctions.CommentDel(postId,userId,val);} }   style={{marginLeft:"auto"}} color="disabled"  />:null }
+        {(use===userId ||userId===undefined) && comment!=caption ?<ClearIcon onClick={ ()=>{profileFunctions.CommentDel(postId,userId,commentId);} }   style={{marginLeft:"auto"}} color="disabled"  />:null }
         
     </div>
     </div>

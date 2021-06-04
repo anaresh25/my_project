@@ -118,12 +118,12 @@ class profileFunctions {
     //res = res.json();
     const data = res.json();
     console.log({data})
-      if (data.error) {
-        M.toast({ html: data.error, classes: "error_Toast" });
-      } else {
-        M.toast({ html:"comment deleted", classes: "success_Toast" });
+      // if (data.error) {
+      //   M.toast({ html: data.error, classes: "error_Toast" });
+      // } else {
+      //   M.toast({ html:"comment deleted", classes: "success_Toast" });
 
-      }
+      // }
       // cogoToast.(`You have reached the bottom 😱!`, {
       //   position: 'bottom-right'
       // });
