@@ -230,9 +230,9 @@ const Profile = () => {
             );
           })
         ) : (
-          <div className="notFollowContainer">
+          <div>
             <p className="Profile_Info_Text">This Account is Private</p>
-            <p className="Profile_Info_Text">Follow to see their photos</p>
+            {/* <p className="Profile_Info_Text">Follow to see their photos</p> */}
           </div>
         )}
       </div>

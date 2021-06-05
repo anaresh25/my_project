@@ -41,7 +41,8 @@ const Home = () => {
       >
       
         {data.length === 0 ? (
-          <h1>We got nothing to show,follow some user</h1>
+          // <h1>We got nothing to show,follow some user</h1>
+          <p> </p>
         ) : null}
         {data.map((post, index) => {
           return (
