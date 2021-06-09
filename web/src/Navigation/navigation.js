@@ -153,11 +153,12 @@ const Navigation = () => {
         </div>
        
       </nav>
+      {console.log(users,searchuser,close)}
       { searchuser && <Modal>
-        <SearchModal close={close} />
+        <SearchModal close={close} closeModal={()=>{setsearchuser(!searchuser)}} />
       </Modal> }
       { users && <Modal>
-        <AllUser close={close}/>
+        <AllUser close={close} closeModal={()=>{setusers(!users)}}/>
       </Modal> }
     </header>
   );

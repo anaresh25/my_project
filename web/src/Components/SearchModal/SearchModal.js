@@ -3,7 +3,7 @@ import SearchUser from "../SearchUser/SearchUser";
 import profileFunctions from "../../utils/profile";
 import "./SearchModal.css";
 const SearchModal = (props) => {
-  const { close } = props;
+  const { close ,closeModal} = props;
 
   const [data, setData] = useState([]);
   const searchData = async (name) => {
@@ -14,6 +14,7 @@ const SearchModal = (props) => {
     setData(res.searchResult);
   };
   return (
+    <>
     <div className="Search_Modal">
       <div className="Search_Modal_div">
         <div className="search_container">
@@ -23,7 +24,8 @@ const SearchModal = (props) => {
             className="search_input"
             onChange={(e) => searchData(e.target.value)}
           />
-       
+      <button  onClick={closeModal}>close</button>
+
         </div>
         <div className="search_result_container">
           {data.map((data, index) => {
@@ -33,12 +35,14 @@ const SearchModal = (props) => {
                 userId={data._id}
                 name={data.name}
                 close={close}
+                closeModal={closeModal}
               />
             );
           })}
         </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -5,10 +5,11 @@ import "./SearchUser.css";
 
 const SearchUser = (props) => {
   const history = useHistory();
-  const { profile_image, userId, name, close } = props;
+  const { profile_image, userId, name, close ,closeModal } = props;
   const submit = () => {
     history.push(DashboardRoutes.createProfileRoute(userId));
     close();
+    closeModal();
   };
   return (
     <div onClick={submit} className="searchUserContainer">

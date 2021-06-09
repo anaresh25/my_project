@@ -1,4 +1,4 @@
-import React, { useEffect, createContext, useReducer, useContext } from "react";
+import React, { useEffect, createContext, useReducer, useContext ,Suspense} from "react";
 import Navigation from "./Navigation/navigation";
 import "./App.css";
 import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
@@ -37,6 +37,7 @@ const Routing = () => {
     }
   }, []);
   return (
+    <Suspense fallback={<h1 >Yo</h1>}>
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path={authRoutes.logInRoute()} component={Login} />
@@ -74,6 +75,7 @@ const Routing = () => {
       </Route>
        */}
     </Switch>
+    </Suspense>
   );
 };
 function App() {

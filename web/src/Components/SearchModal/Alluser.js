@@ -3,7 +3,7 @@ import SearchUser from "../SearchUser/SearchUser";
 import profileFunctions from "../../utils/profile";
 import "./SearchModal.css";
 const SearchModal = (props) => {
-  const { close } = props;
+  const { close ,closeModal} = props;
 
     const [users,setusers]= useState([])
     const Aluser =async()=>
@@ -27,12 +27,14 @@ const SearchModal = (props) => {
                 userId={data._id}
                 name={data.name}
                 close={close}
+                closeModal={closeModal}
               />
             );
           })}
         
         </div>
       </div>
+      <button onClick={closeModal}>close</button>
     </div>
   );
 };
