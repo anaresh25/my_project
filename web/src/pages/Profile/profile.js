@@ -11,7 +11,7 @@ import * as DashboardRoutes from "../../Routes/DashboardRoutes";
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
-
+import CircularProgress from '@material-ui/core/CircularProgress';
 const Profile = () => {
   const { state, dispatch } = useContext(UserContext);
   const [data, setData] = useState([]);
@@ -175,7 +175,7 @@ const Profile = () => {
           {!loading ? (
             <img className="Profile_Img" src={user.profile_image} />
           ) : (
-            "loading"
+            <CircularProgress /> 
           )}
         </div>
         <div className="Profile_Info_Container">
@@ -196,14 +196,14 @@ const Profile = () => {
           </div>
           <div className="Profile_Info">
             <span className="Profile_Info_Text">
-              {!loading ? totalPost : "loading"} posts
+              {!loading ? totalPost :<CircularProgress size="1rem" /> } posts
             </span>
             {/* {isAdmin ? "admin" : "not admin"} */}
             <span className="Profile_Info_Text" onClick={navigateToFollowers}>
-              {!loading ? totalFollowers : "loading"} followers
+              {!loading ? totalFollowers : <CircularProgress size="1rem" />} followers
             </span>
             <span className="Profile_Info_Text" onClick={navigateToFollowing}  >
-              {!loading ? totalFollowing : "loading"} following
+              {!loading ? totalFollowing :<CircularProgress  size="1rem"/>} following
             </span>
           </div>
         </div>

@@ -10,7 +10,7 @@ import PostCard from "../../Components/PostCard/PostCard";
 import M from "materialize-css";
 import FetchFeedPost from "../../customHooks/fetchFeedPostHook";
 import { UserContext } from "../../App";
-
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const Home = () => {
 
@@ -35,7 +35,7 @@ const Home = () => {
         hasMore={hasMoreData}
         loader={
           <div className="Post_Title_Comment_Text">
-            {loading && "Loading..."}
+            {loading && <LinearProgress />}
           </div>
         }
       >
