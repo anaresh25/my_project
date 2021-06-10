@@ -4,7 +4,7 @@ const authController = require("../controllers/auth");
 const authRoutes = require("../apiConstants/authApiConstant");
 
 router.get("/", (req, res) => {
-  res.send("Hello");
+  res.send("hello");
 });
 
 router.post(authRoutes.postSignUpRoute(), authController.postSignUp);
