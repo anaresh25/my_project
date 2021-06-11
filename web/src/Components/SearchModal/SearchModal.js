@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SearchUser from "../SearchUser/SearchUser";
 import profileFunctions from "../../utils/profile";
 import "./SearchModal.css";
+import CloseIcon from "@material-ui/icons/Close";
 const SearchModal = (props) => {
   const { close ,closeModal} = props;
 
@@ -24,8 +25,7 @@ const SearchModal = (props) => {
             className="search_input"
             onChange={(e) => searchData(e.target.value)}
           />
-      <button  onClick={closeModal}>close</button>
-
+        <CloseIcon className="sv" onClick={closeModal}  />
         </div>
         <div className="search_result_container">
           {data.map((data, index) => {

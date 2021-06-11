@@ -35,7 +35,7 @@ const Home = () => {
         hasMore={hasMoreData}
         loader={
           <div className="Post_Title_Comment_Text">
-            {loading && <LinearProgress />}
+            {loading && <LinearProgress color="secondary"/>}
           </div>
         }
       >
